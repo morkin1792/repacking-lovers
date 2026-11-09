@@ -1,0 +1,455 @@
+{
+  "artifacts": [
+    {
+      "coordinate": "com.android.tools.smali:smali:3.0.9",
+      "jar": {
+        "path": ".work/tools/maven/com.android.tools.smali/smali/3.0.9/smali-3.0.9.jar",
+        "sha256": "98e917b1b1e4f5aa48e74c97fee786645725e9b79e9842e3d7e50f65896553f1",
+        "source_url": "https://dl.google.com/dl/android/maven2/com/android/tools/smali/smali/3.0.9/smali-3.0.9.jar"
+      },
+      "licenses": [
+        {
+          "name": "The BSD 3-Clause License",
+          "url": "http://opensource.org/licenses/BSD-3-Clause"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.android.tools.smali/smali/3.0.9/smali-3.0.9.pom",
+        "sha256": "5d605b04789cc4477ab3dd64ccf70713111afa067be7bc78df8b2e0fb7c5cd5c",
+        "source_url": "https://dl.google.com/dl/android/maven2/com/android/tools/smali/smali/3.0.9/smali-3.0.9.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.android.tools.smali:smali-baksmali:3.0.9",
+      "jar": {
+        "path": ".work/tools/maven/com.android.tools.smali/smali-baksmali/3.0.9/smali-baksmali-3.0.9.jar",
+        "sha256": "e7d0166945565a87f3997d1aea8779202dbb6cb0585a39ee20bab8a2f5ba87f6",
+        "source_url": "https://dl.google.com/dl/android/maven2/com/android/tools/smali/smali-baksmali/3.0.9/smali-baksmali-3.0.9.jar"
+      },
+      "licenses": [
+        {
+          "name": "The BSD 3-Clause License",
+          "url": "http://opensource.org/licenses/BSD-3-Clause"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.android.tools.smali/smali-baksmali/3.0.9/smali-baksmali-3.0.9.pom",
+        "sha256": "cd0967efec005106dc8080c4687ea4cddf6e0e52d7159cbe87657d21f9ab3028",
+        "source_url": "https://dl.google.com/dl/android/maven2/com/android/tools/smali/smali-baksmali/3.0.9/smali-baksmali-3.0.9.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.android.tools.smali:smali-dexlib2:3.0.9",
+      "jar": {
+        "path": ".work/tools/maven/com.android.tools.smali/smali-dexlib2/3.0.9/smali-dexlib2-3.0.9.jar",
+        "sha256": "8b547506f62f91d74b70f4beb4989b99e1ff61fc50b2525e9796ca35f0a351dc",
+        "source_url": "https://dl.google.com/dl/android/maven2/com/android/tools/smali/smali-dexlib2/3.0.9/smali-dexlib2-3.0.9.jar"
+      },
+      "licenses": [
+        {
+          "name": "The BSD 3-Clause License",
+          "url": "http://opensource.org/licenses/BSD-3-Clause"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.android.tools.smali/smali-dexlib2/3.0.9/smali-dexlib2-3.0.9.pom",
+        "sha256": "670272349e5df90a8444c1be6b6bd8b8d3b8becbd79ca43271869641e6c4d79b",
+        "source_url": "https://dl.google.com/dl/android/maven2/com/android/tools/smali/smali-dexlib2/3.0.9/smali-dexlib2-3.0.9.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.android.tools.smali:smali-util:3.0.9",
+      "jar": {
+        "path": ".work/tools/maven/com.android.tools.smali/smali-util/3.0.9/smali-util-3.0.9.jar",
+        "sha256": "4673762894ba4156081fc5c642f74d6e78aef8b1a9c7702d691e3171d8cc1153",
+        "source_url": "https://dl.google.com/dl/android/maven2/com/android/tools/smali/smali-util/3.0.9/smali-util-3.0.9.jar"
+      },
+      "licenses": [
+        {
+          "name": "The BSD 3-Clause License",
+          "url": "http://opensource.org/licenses/BSD-3-Clause"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.android.tools.smali/smali-util/3.0.9/smali-util-3.0.9.pom",
+        "sha256": "c3d2853aaadc09d79f1f6528965c1302c71cd0ef2cec6524c4ca8dde23269a1b",
+        "source_url": "https://dl.google.com/dl/android/maven2/com/android/tools/smali/smali-util/3.0.9/smali-util-3.0.9.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.google.guava:guava:31.1-android",
+      "jar": {
+        "path": ".work/tools/maven/com.google.guava/guava/31.1-android/guava-31.1-android.jar",
+        "sha256": "32ac2ed709d96d278b5d2e3e5cea178fa4939939c525fb647532f013308db309",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/guava/guava/31.1-android/guava-31.1-android.jar"
+      },
+      "licenses": [],
+      "pom": {
+        "path": ".work/tools/maven/com.google.guava/guava/31.1-android/guava-31.1-android.pom",
+        "sha256": "66292995644e95537ee97a89e8990171d8f3c26acf984830a7791997073d451d",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/guava/guava/31.1-android/guava-31.1-android.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.google.guava:failureaccess:1.0.1",
+      "jar": {
+        "path": ".work/tools/maven/com.google.guava/failureaccess/1.0.1/failureaccess-1.0.1.jar",
+        "sha256": "a171ee4c734dd2da837e4b16be9df4661afab72a41adaf31eb84dfdaf936ca26",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.jar"
+      },
+      "licenses": [],
+      "pom": {
+        "path": ".work/tools/maven/com.google.guava/failureaccess/1.0.1/failureaccess-1.0.1.pom",
+        "sha256": "e96042ce78fecba0da2be964522947c87b40a291b5fd3cd672a434924103c4b9",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/guava/failureaccess/1.0.1/failureaccess-1.0.1.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava",
+      "jar": {
+        "path": ".work/tools/maven/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar",
+        "sha256": "b372a037d4230aa57fbeffdef30fd6123f9c0c2db85d0aced00c91b974f33f99",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar"
+      },
+      "licenses": [],
+      "pom": {
+        "path": ".work/tools/maven/com.google.guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom",
+        "sha256": "18d4b1db26153d4e55079ce1f76bb1fe05cdb862ef9954a88cbcc4ff38b8679b",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/guava/listenablefuture/9999.0-empty-to-avoid-conflict-with-guava/listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.google.code.findbugs:jsr305:3.0.2",
+      "jar": {
+        "path": ".work/tools/maven/com.google.code.findbugs/jsr305/3.0.2/jsr305-3.0.2.jar",
+        "sha256": "766ad2a0783f2687962c8ad74ceecc38a28b9f72a2d085ee438b7813e928d0c7",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.google.code.findbugs/jsr305/3.0.2/jsr305-3.0.2.pom",
+        "sha256": "19889dbdf1b254b2601a5ee645b8147a974644882297684c798afe5d63d78dfe",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "org.checkerframework:checker-qual:3.12.0",
+      "jar": {
+        "path": ".work/tools/maven/org.checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar",
+        "sha256": "ff10785ac2a357ec5de9c293cb982a2cbb605c0309ea4cc1cb9b9bc6dbe7f3cb",
+        "source_url": "https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.jar"
+      },
+      "licenses": [
+        {
+          "name": "The MIT License",
+          "url": "http://opensource.org/licenses/MIT"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/org.checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.pom",
+        "sha256": "775b7ae36e62820b3b86dc1aa39af37c0ac4b85ff48f7fe485a922a2790f46b9",
+        "source_url": "https://repo.maven.apache.org/maven2/org/checkerframework/checker-qual/3.12.0/checker-qual-3.12.0.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.google.errorprone:error_prone_annotations:2.11.0",
+      "jar": {
+        "path": ".work/tools/maven/com.google.errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.jar",
+        "sha256": "721cb91842b46fa056847d104d5225c8b8e1e8b62263b993051e1e5a0137b7ec",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.jar"
+      },
+      "licenses": [
+        {
+          "name": "Apache 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.google.errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.pom",
+        "sha256": "0261ca01f2d2e9ac2ae2ece75d42c56323b385fb294b6bc943f62ef4e92ddf08",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/errorprone/error_prone_annotations/2.11.0/error_prone_annotations-2.11.0.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.google.j2objc:j2objc-annotations:1.3",
+      "jar": {
+        "path": ".work/tools/maven/com.google.j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar",
+        "sha256": "21af30c92267bd6122c0e0b4d20cccb6641a37eaf956c6540ec471d584e64a7b",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.google.j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.pom",
+        "sha256": "5faca824ba115bee458730337dfdb2fcea46ba2fd774d4304edbf30fa6a3f055",
+        "source_url": "https://repo.maven.apache.org/maven2/com/google/j2objc/j2objc-annotations/1.3/j2objc-annotations-1.3.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.beust:jcommander:1.64",
+      "jar": {
+        "path": ".work/tools/maven/com.beust/jcommander/1.64/jcommander-1.64.jar",
+        "sha256": "156be736199c990321d9ff77090b199629cfc9865e2d6c13f7cd291bb1641817",
+        "source_url": "https://repo.maven.apache.org/maven2/com/beust/jcommander/1.64/jcommander-1.64.jar"
+      },
+      "licenses": [
+        {
+          "name": "Apache 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.beust/jcommander/1.64/jcommander-1.64.pom",
+        "sha256": "17ce0c32e9cf953678f820ae5f2ad92eef396d840f667fc99f23adc0ad25d328",
+        "source_url": "https://repo.maven.apache.org/maven2/com/beust/jcommander/1.64/jcommander-1.64.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "org.antlr:antlr:3.5.2",
+      "jar": {
+        "path": ".work/tools/maven/org.antlr/antlr/3.5.2/antlr-3.5.2.jar",
+        "sha256": "5ac36c2acfb0a0f3d37dafe20b5b570f2643e2d000c648d44503c2738be643df",
+        "source_url": "https://repo.maven.apache.org/maven2/org/antlr/antlr/3.5.2/antlr-3.5.2.jar"
+      },
+      "licenses": [],
+      "pom": {
+        "path": ".work/tools/maven/org.antlr/antlr/3.5.2/antlr-3.5.2.pom",
+        "sha256": "065e5e80662feb858795d3c01f7714247bdd319459705ee13b1a4b1968fa22e4",
+        "source_url": "https://repo.maven.apache.org/maven2/org/antlr/antlr/3.5.2/antlr-3.5.2.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "org.antlr:antlr-runtime:3.5.2",
+      "jar": {
+        "path": ".work/tools/maven/org.antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar",
+        "sha256": "ce3fc8ecb10f39e9a3cddcbb2ce350d272d9cd3d0b1e18e6fe73c3b9389c8734",
+        "source_url": "https://repo.maven.apache.org/maven2/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.jar"
+      },
+      "licenses": [],
+      "pom": {
+        "path": ".work/tools/maven/org.antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.pom",
+        "sha256": "46a9c2200bb8b12bd7124aa7a5097ff49099908329c851a04cb2051420aa7f25",
+        "source_url": "https://repo.maven.apache.org/maven2/org/antlr/antlr-runtime/3.5.2/antlr-runtime-3.5.2.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "org.antlr:ST4:4.0.8",
+      "jar": {
+        "path": ".work/tools/maven/org.antlr/ST4/4.0.8/ST4-4.0.8.jar",
+        "sha256": "58caabc40c9f74b0b5993fd868e0f64a50c0759094e6a251aaafad98edfc7a3b",
+        "source_url": "https://repo.maven.apache.org/maven2/org/antlr/ST4/4.0.8/ST4-4.0.8.jar"
+      },
+      "licenses": [
+        {
+          "name": "BSD licence",
+          "url": "http://antlr.org/license.html"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/org.antlr/ST4/4.0.8/ST4-4.0.8.pom",
+        "sha256": "3c0890dec71174eb3ba3d404ca9e341901ff6b0421808b00713b0dbb1306c17c",
+        "source_url": "https://repo.maven.apache.org/maven2/org/antlr/ST4/4.0.8/ST4-4.0.8.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "org.antlr:stringtemplate:3.2.1",
+      "jar": {
+        "path": ".work/tools/maven/org.antlr/stringtemplate/3.2.1/stringtemplate-3.2.1.jar",
+        "sha256": "f66ce72e965e5301cb0f020e54d2ba6ad76feb91b3cbfc30dbbf00c06a6df6d7",
+        "source_url": "https://repo.maven.apache.org/maven2/org/antlr/stringtemplate/3.2.1/stringtemplate-3.2.1.jar"
+      },
+      "licenses": [
+        {
+          "name": "BSD licence",
+          "url": "http://antlr.org/license.html"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/org.antlr/stringtemplate/3.2.1/stringtemplate-3.2.1.pom",
+        "sha256": "b45e82655aa5a48f33d13a43e4345426b156335b35e24b5aea12db5823c16a16",
+        "source_url": "https://repo.maven.apache.org/maven2/org/antlr/stringtemplate/3.2.1/stringtemplate-3.2.1.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "antlr:antlr:2.7.7",
+      "jar": {
+        "path": ".work/tools/maven/antlr/antlr/2.7.7/antlr-2.7.7.jar",
+        "sha256": "88fbda4b912596b9f56e8e12e580cc954bacfb51776ecfddd3e18fc1cf56dc4c",
+        "source_url": "https://repo.maven.apache.org/maven2/antlr/antlr/2.7.7/antlr-2.7.7.jar"
+      },
+      "licenses": [],
+      "pom": {
+        "path": ".work/tools/maven/antlr/antlr/2.7.7/antlr-2.7.7.pom",
+        "sha256": "100f793ba27f8b4e4204edb46171ebf36e54e0f94cfc02527fea07a0bb1fceb7",
+        "source_url": "https://repo.maven.apache.org/maven2/antlr/antlr/2.7.7/antlr-2.7.7.pom"
+      },
+      "suite": "smali"
+    },
+    {
+      "coordinate": "com.squareup.okhttp3:okhttp:4.12.0",
+      "jar": {
+        "path": ".work/tools/maven/com.squareup.okhttp3/okhttp/4.12.0/okhttp-4.12.0.jar",
+        "sha256": "b1050081b14bb7a3a7e55a4d3ef01b5dcfabc453b4573a4fc019767191d5f4e0",
+        "source_url": "https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/4.12.0/okhttp-4.12.0.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.squareup.okhttp3/okhttp/4.12.0/okhttp-4.12.0.pom",
+        "sha256": "7c737040a9419522e7c50cc027416a70fe7c7629e52b219935ade6b4119c7d38",
+        "source_url": "https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/4.12.0/okhttp-4.12.0.pom"
+      },
+      "suite": "http-fixture"
+    },
+    {
+      "coordinate": "com.squareup.okio:okio-jvm:3.6.0",
+      "jar": {
+        "path": ".work/tools/maven/com.squareup.okio/okio-jvm/3.6.0/okio-jvm-3.6.0.jar",
+        "sha256": "67543f0736fc422ae927ed0e504b98bc5e269fda0d3500579337cb713da28412",
+        "source_url": "https://repo.maven.apache.org/maven2/com/squareup/okio/okio-jvm/3.6.0/okio-jvm-3.6.0.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/com.squareup.okio/okio-jvm/3.6.0/okio-jvm-3.6.0.pom",
+        "sha256": "61b4d7c515a0894ffad925fd7052620c1425a86433fd35113b5fab0de890a57f",
+        "source_url": "https://repo.maven.apache.org/maven2/com/squareup/okio/okio-jvm/3.6.0/okio-jvm-3.6.0.pom"
+      },
+      "suite": "http-fixture"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-stdlib:1.9.10",
+      "jar": {
+        "path": ".work/tools/maven/org.jetbrains.kotlin/kotlin-stdlib/1.9.10/kotlin-stdlib-1.9.10.jar",
+        "sha256": "55e989c512b80907799f854309f3bc7782c5b3d13932442d0379d5c472711504",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/1.9.10/kotlin-stdlib-1.9.10.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/org.jetbrains.kotlin/kotlin-stdlib/1.9.10/kotlin-stdlib-1.9.10.pom",
+        "sha256": "7e29fbf73fdf71e0679d3dee7e680fd573464fa01644a4f58ab819d2c088d3d2",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib/1.9.10/kotlin-stdlib-1.9.10.pom"
+      },
+      "suite": "http-fixture"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.10",
+      "jar": {
+        "path": ".work/tools/maven/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.9.10/kotlin-stdlib-jdk7-1.9.10.jar",
+        "sha256": "ac6361bf9ad1ed382c2103d9712c47cdec166232b4903ed596e8876b0681c9b7",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.10/kotlin-stdlib-jdk7-1.9.10.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/org.jetbrains.kotlin/kotlin-stdlib-jdk7/1.9.10/kotlin-stdlib-jdk7-1.9.10.pom",
+        "sha256": "c7fa67c7961320b89d85a3ca59a2e18c2c65850845595dcae4b46af6945edcd5",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.10/kotlin-stdlib-jdk7-1.9.10.pom"
+      },
+      "suite": "http-fixture"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.10",
+      "jar": {
+        "path": ".work/tools/maven/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.9.10/kotlin-stdlib-jdk8-1.9.10.jar",
+        "sha256": "a4c74d94d64ce1abe53760fe0389dd941f6fc558d0dab35e47c085a11ec80f28",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.10/kotlin-stdlib-jdk8-1.9.10.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/org.jetbrains.kotlin/kotlin-stdlib-jdk8/1.9.10/kotlin-stdlib-jdk8-1.9.10.pom",
+        "sha256": "5f4b94dd3065a7764c37fa15de2ad6d81f40d59f8cb33f17d181c6384fb7a72e",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.10/kotlin-stdlib-jdk8-1.9.10.pom"
+      },
+      "suite": "http-fixture"
+    },
+    {
+      "coordinate": "org.jetbrains.kotlin:kotlin-stdlib-common:1.9.10",
+      "jar": {
+        "path": ".work/tools/maven/org.jetbrains.kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.jar",
+        "sha256": "cde3341ba18a2ba262b0b7cf6c55b20c90e8d434e42c9a13e6a3f770db965a88",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/org.jetbrains.kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.pom",
+        "sha256": "7d4b70547910676b3bdfc8925a88f3b6bfb24582c9784542805544ceef490a92",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.10/kotlin-stdlib-common-1.9.10.pom"
+      },
+      "suite": "http-fixture"
+    },
+    {
+      "coordinate": "org.jetbrains:annotations:13.0",
+      "jar": {
+        "path": ".work/tools/maven/org.jetbrains/annotations/13.0/annotations-13.0.jar",
+        "sha256": "ace2a10dc8e2d5fd34925ecac03e4988b2c0f851650c94b8cef49ba1bd111478",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0.jar"
+      },
+      "licenses": [
+        {
+          "name": "The Apache Software License, Version 2.0",
+          "url": "http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "pom": {
+        "path": ".work/tools/maven/org.jetbrains/annotations/13.0/annotations-13.0.pom",
+        "sha256": "965aeb2bedff369819bdde1bf7a0b3b89b8247dd69c88b86375d76163bb8c397",
+        "source_url": "https://repo.maven.apache.org/maven2/org/jetbrains/annotations/13.0/annotations-13.0.pom"
+      },
+      "suite": "http-fixture"
+    }
+  ],
+  "schema_version": 1
+}

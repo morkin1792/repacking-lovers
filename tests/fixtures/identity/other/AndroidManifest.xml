@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="dev.repack.fixture.other" android:versionCode="1" android:versionName="1">
+    <uses-sdk android:minSdkVersion="28" android:targetSdkVersion="35" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="dev.repack.fixture.permission.CONTRACT" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <queries><package android:name="dev.repack.fixture.identity" /></queries>
+    <application android:name="dev.repack.fixture.common.FixtureApplication"
+        android:appComponentFactory="dev.repack.fixture.common.FixtureFactory"
+        android:debuggable="false" android:allowBackup="false" android:label="Repack other fixture"
+        android:networkSecurityConfig="@xml/network_security_config">
+        <activity android:name=".ProbeActivity" android:exported="true" />
+        <provider android:name="dev.repack.fixture.common.FixtureProvider" android:authorities="dev.repack.fixture.other.provider" android:exported="false" />
+        <receiver android:name="dev.repack.fixture.common.FixtureReceiver" android:exported="true" />
+        <receiver android:name="dev.repack.fixture.common.NetworkReceiver" android:exported="true" />
+        <service android:name="dev.repack.fixture.common.FixtureService" android:exported="true" android:foregroundServiceType="dataSync" />
+    </application>
+</manifest>

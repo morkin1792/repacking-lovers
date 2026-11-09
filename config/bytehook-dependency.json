@@ -1,0 +1,46 @@
+{
+  "schema_version": 1,
+  "bytehook_version": "1.1.2",
+  "shadowhook_version": "2.0.1",
+  "license": "MIT; both notices retained",
+  "minimum_compile_api": 28,
+  "artifacts": [
+    {
+      "path": ".work/tools/native-research/bytehook-1.1.2.aar",
+      "url": "https://repo.maven.apache.org/maven2/com/bytedance/bytehook/1.1.2/bytehook-1.1.2.aar",
+      "sha256": "b3c85fec26e9f41fd3608851ac3fe412573ef4ce6ef83911b92d610d3bab7215"
+    },
+    {
+      "path": ".work/tools/native-research/bytehook-1.1.2.pom",
+      "url": "https://repo.maven.apache.org/maven2/com/bytedance/bytehook/1.1.2/bytehook-1.1.2.pom",
+      "sha256": "d98e84cfd96ba229b06471fa01804f9ff81c012bfb4873a63fba76a886847b2b"
+    },
+    {
+      "path": ".work/tools/native-research/shadowhook-2.0.1.aar",
+      "url": "https://repo.maven.apache.org/maven2/com/bytedance/android/shadowhook/2.0.1/shadowhook-2.0.1.aar",
+      "sha256": "2cad01ff4d59542958775e19f281981a7e84b39670b5fae75905b8511e10c7cd"
+    },
+    {
+      "path": ".work/tools/native-research/bhook-v1.1.2.zip",
+      "url": "https://codeload.github.com/bytedance/bhook/zip/refs/tags/v1.1.2",
+      "sha256": "808a9f585e50eceb6be3a7a16e7d93f67e92b91a2c03fc6853edf77c84a8aae5"
+    },
+    {
+      "path": ".work/tools/native-research/LICENSE",
+      "url": "https://github.com/bytedance/bhook/blob/v1.1.2/LICENSE",
+      "sha256": "d5fc3344e3e6234e45a39931feed9d82e6886fe7f3f1b7d2a6e85e5cfdd9cde0"
+    },
+    {
+      "path": ".work/tools/native-research/ShadowHook-LICENSE",
+      "url": "https://github.com/bytedance/android-inline-hook/blob/v2.0.1/LICENSE",
+      "sha256": "63204388d1ac7b371e03223fb4910a04fdb41cd67d4f0e0a030d5249d811d7eb"
+    }
+  ],
+  "fixture_abis": [
+    "arm64-v8a",
+    "x86_64",
+    "armeabi-v7a"
+  ],
+  "runtime_cell": "API30 physical phone; arm64 and arm32 runtime tested only when their case passes; x86_64 build only",
+  "page_size_scope": "16KB host ELF checks for 64-bit components; ARM32 upstream components have 4KB segments, no 16KB runtime claim"
+}

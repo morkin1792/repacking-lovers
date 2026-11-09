@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "mode": "reflutter-exact-engine",
+  "flutter_version": "3.10.6",
+  "engine_revision": "cdbeda788a293fa29665dc3fa3d6e63bd221cb0d",
+  "abi": "arm64-v8a",
+  "runtime_api": 30,
+  "runtime_page_size": 4096,
+  "sdk": {
+    "index_url": "https://storage.googleapis.com/flutter_infra_release/releases/releases_linux.json",
+    "index_sha256": "c32e4070a5a1ee5025e8dfc205326ccf50af3833db71462f1a47cbb54fd75cda",
+    "base_url": "https://storage.googleapis.com/flutter_infra_release/releases",
+    "release": {
+      "hash": "f468f3366c26a5092eb964a230ce7892fda8f2f8",
+      "channel": "stable",
+      "version": "3.10.6",
+      "dart_sdk_version": "3.0.6",
+      "dart_sdk_arch": "x64",
+      "release_date": "2023-07-13T01:11:07.927907Z",
+      "archive": "stable/linux/flutter_linux_3.10.6-stable.tar.xz",
+      "sha256": "7048e51a89c99a5b6cac6d8ae416121264effa76da34dba5c0e7cf85519c8e98"
+    }
+  },
+  "inputs": [
+    {
+      "path": ".work/tools/flutter-3.10.6/bin/cache/dart-sdk/bin/dart",
+      "sha256": "480939a1d5e63b09e50ac053a0dbf05999aa32a1bf7649e4cd835eb5b229789f"
+    },
+    {
+      "path": ".work/tools/flutter-3.10.6/bin/cache/flutter_tools.snapshot",
+      "sha256": "88351319a72bb4ee005a7e9fbf5494cd9ecc9826f724ef2ce79c5a13a58ec6b7"
+    },
+    {
+      "path": ".work/tools/flutter-3.10.6/bin/cache/artifacts/engine/android-arm64-release/flutter.jar",
+      "sha256": "c539ffc1cdccc31fefa442d4b6817c87327dcee7979f31ab0f40684da3e2bb37"
+    },
+    {
+      "path": ".work/tools/flutter-3.10.6/bin/cache/artifacts/engine/android-arm64-release/linux-x64/gen_snapshot",
+      "sha256": "f9718a6fbd94837a23369241edbddcd463531a0c6ed6684de24b51f3d5ba255e"
+    },
+    {
+      "path": ".work/tools/flutter-3.10.6/bin/internal/engine.version",
+      "sha256": "90c5bc6113c3195611964cb43565496af032c8850aa820ae3f0ec816b912c1aa"
+    }
+  ],
+  "dependencies": [
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/lifecycle/lifecycle-common/2.2.0/lifecycle-common-2.2.0.jar",
+      "path": ".work/tools/native-research/reflutter/android-deps/lifecycle-common-2.2.0.jar",
+      "sha256": "63898dabf7cfe5ec5d7ed8b8c2564c1427be876e1496ead95c2703cf59d3734b"
+    },
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/lifecycle/lifecycle-runtime/2.2.0/lifecycle-runtime-2.2.0.aar",
+      "path": ".work/tools/native-research/reflutter/android-deps/lifecycle-runtime-2.2.0.aar",
+      "sha256": "2f866c07a1f33a8c9bb69a9545d4f20b4f0628cd0a155432386d7cb081e1e0bc",
+      "classes_path": ".work/tools/native-research/reflutter/android-deps/lifecycle-runtime-2.2.0.jar",
+      "classes_sha256": "3034e717d8da44842dbb63095b8c66b6d5074b62ebd1220007be7f036fd523cf"
+    },
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/tracing/tracing/1.0.0/tracing-1.0.0.aar",
+      "path": ".work/tools/native-research/reflutter/android-deps/tracing-1.0.0.aar",
+      "sha256": "07b8b6139665b884a162eccf97891ca50f7f56831233bf25168ae04f7b568612",
+      "classes_path": ".work/tools/native-research/reflutter/android-deps/tracing-1.0.0.jar",
+      "classes_sha256": "f14fa7864f1a61bb9a6e2fe9ffaf1f911f03a44ff5d06172b1ef84b3ec30a2d9"
+    },
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/annotation/annotation/1.1.0/annotation-1.1.0.jar",
+      "path": ".work/tools/native-research/reflutter/android-deps/annotation-1.1.0.jar",
+      "sha256": "d38d63edb30f1467818d50aaf05f8a692dea8b31392a049bfa991b159ad5b692"
+    },
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/core/core/1.6.0/core-1.6.0.aar",
+      "path": ".work/tools/native-research/reflutter/android-deps/core-1.6.0.aar",
+      "sha256": "875dbec888c91b05521575fd180cc08824d2c4d12b10b0261b4f9d6825214ef1",
+      "classes_path": ".work/tools/native-research/reflutter/android-deps/core-1.6.0.jar",
+      "classes_sha256": "11dbf4d15318803cb8fb1559bc1fe2c515bf78256b1c3f7a1d2f7946f698b61e"
+    },
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/arch/core/core-common/2.1.0/core-common-2.1.0.jar",
+      "path": ".work/tools/native-research/reflutter/android-deps/core-common-2.1.0.jar",
+      "sha256": "fe1237bf029d063e7f29fe39aeaf73ef74c8b0a3658486fc29d3c54326653889"
+    },
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/arch/core/core-runtime/2.1.0/core-runtime-2.1.0.aar",
+      "path": ".work/tools/native-research/reflutter/android-deps/core-runtime-2.1.0.aar",
+      "sha256": "dd77615bd3dd275afb11b62df25bae46b10b4a117cd37943af45bdcbf8755852",
+      "classes_path": ".work/tools/native-research/reflutter/android-deps/core-runtime-2.1.0.jar",
+      "classes_sha256": "c6ad6f342ea2626dc923589a50a51298eff2949d5407a4e6196ad676f65a4885"
+    },
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/collection/collection/1.0.0/collection-1.0.0.jar",
+      "path": ".work/tools/native-research/reflutter/android-deps/collection-1.0.0.jar",
+      "sha256": "9c8d117b5c2bc120a1cdfeb857e05b495b16c36013570372a708f7827e3ac9f9"
+    },
+    {
+      "url": "https://dl.google.com/dl/android/maven2/androidx/versionedparcelable/versionedparcelable/1.1.1/versionedparcelable-1.1.1.aar",
+      "path": ".work/tools/native-research/reflutter/android-deps/versionedparcelable-1.1.1.aar",
+      "sha256": "57e8d93260d18d5b9007c9eed3c64ad159de90c8609ebfc74a347cbd514535a4",
+      "classes_path": ".work/tools/native-research/reflutter/android-deps/versionedparcelable-1.1.1.jar",
+      "classes_sha256": "4733ce6afbb1c7941989ae581ca7bfc28925c0afc8f91c3e5f5f0500da6c9f83"
+    }
+  ],
+  "original_engine_sha256": "8e6c447139ad961c474be97f61d22eb33c6ebb316feb5646ea4506d1e40270e0",
+  "snapshot_hash": "90b56a561f70cd55e972cb49b79b3d8b",
+  "replacement": {
+    "path": ".work/tools/native-research/reflutter/libflutter_arm64-reflutter.so",
+    "sha256": "e5729e10939efc398cdb3a87628995efd5e593095b99d0fbe05594a00c0e6d4d",
+    "url": "https://github.com/Impact-I/reFlutter/releases/download/android-v2-90b56a561f70cd55e972cb49b79b3d8b/libflutter_arm64.so"
+  },
+  "upstream_commit": {
+    "sha": "590b1d2f12a274a249fb84a7fc4e2236fbe4639d",
+    "url": "https://github.com/Impact-I/reFlutter/commit/590b1d2f12a274a249fb84a7fc4e2236fbe4639d"
+  },
+  "upstream_license": {
+    "path": ".work/tools/native-research/reflutter/LICENSE",
+    "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+  },
+  "endpoint": {
+    "host": "127.0.0.1",
+    "port": 8083,
+    "wire_mode": "TLS-without-CONNECT"
+  },
+  "route_edit": {
+    "old_ascii": "192.168.133.104",
+    "new_ascii": "127.000.000.001",
+    "required_matches": 1
+  },
+  "limits": [
+    "exact-official-engine-only",
+    "third-party-reflutter-mode",
+    "fixed-loopback-8083",
+    "other-ABI/API/16K-runtime-unmeasured",
+    "Midway-engine-hash-differs"
+  ],
+  "source_contracts": [
+    {
+      "url": "https://raw.githubusercontent.com/dart-lang/sdk/8d5b878d0a8a06326227cde88221eea7e15ee0c4/runtime/vm/snapshot.h",
+      "path": ".work/tools/native-research/reflutter/dart-snapshot.h",
+      "sha256": "288623bea3a3ee50a4f2e97d60c19200a2760be8df17eb4017a78eca66e334fd"
+    },
+    {
+      "url": "https://boringssl.googlesource.com/boringssl/+/87f316d7748268eb56f2dc147bd593254ae93198/ssl/ssl_x509.cc?format=TEXT",
+      "path": ".work/tools/native-research/reflutter/original-ssl_x509.cc",
+      "sha256": "f508b115e3d659318726ef7b0f6dab63ca935e736e006dece16df17e3b827ffa"
+    }
+  ]
+}

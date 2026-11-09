@@ -1,0 +1,35 @@
+{
+  "schema_version": 1,
+  "version": "17.26.0",
+  "release": "https://github.com/frida/frida/releases/tag/17.26.0",
+  "abi": "arm64-v8a",
+  "runtime_api": 30,
+  "archive": {
+    "path": ".work/tools/native-research/frida-gadget-17.26.0-android-arm64.so.xz",
+    "url": "https://github.com/frida/frida/releases/download/17.26.0/frida-gadget-17.26.0-android-arm64.so.xz",
+    "sha256": "0e866f5c79c87a8ead0c5280aea5a695d112fac980883421f21bb7d3cdf938ef"
+  },
+  "library": {
+    "path": ".work/tools/native-research/frida-gadget-17.26.0-android-arm64.so",
+    "sha256": "a7dfd6f946a61d797f9f88f4ee0ecfd20b9999773037fe81bee57020786f0316",
+    "size": 39425840
+  },
+  "license": {
+    "path": ".work/tools/native-research/frida-COPYING",
+    "url": "https://raw.githubusercontent.com/frida/frida-gum/17.26.0/COPYING",
+    "sha256": "00764fcc23f0f2ac6d2619a1f9192e55176ecaaa525e76a47aaabc5d87fb087f"
+  },
+  "interaction": "script",
+  "listener": false,
+  "runtime_scope": "owned raw-APK native fixture only",
+  "fixture_library": {
+    "name": "librepack_gadget_fixture.so",
+    "sha256": "aea4ada35d7654e28bd77279c796a77ea05d52bb1e9501cc13d0eea557d87478",
+    "export": "repack_fixture_raw_gate",
+    "scope": "owned raw-APK syscall fixture"
+  },
+  "script": {
+    "path": "native/gadget/raw-apk-fixture.js",
+    "sha256": "99df3900bf9b08782580a9c491c7782125c26e42881d5c8226a46ee63655d729"
+  }
+}

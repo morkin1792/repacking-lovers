@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "test_only": true,
+  "artifacts": [
+    {
+      "name": "httpclient-4.5.14.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpclient/4.5.14/httpclient-4.5.14.jar",
+      "path": ".work/tools/pinning-expansion/httpclient-4.5.14.jar",
+      "sha256": "c8bc7e1c51a6d4ce72f40d2ebbabf1c4b68bfe76e732104b04381b493478e9d6",
+      "size": 785639
+    },
+    {
+      "name": "httpcore-4.4.16.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/apache/httpcomponents/httpcore/4.4.16/httpcore-4.4.16.jar",
+      "path": ".work/tools/pinning-expansion/httpcore-4.4.16.jar",
+      "sha256": "6c9b3dd142a09dc468e23ad39aad6f75a0f2b85125104469f026e52a474e464f",
+      "size": 327891
+    },
+    {
+      "name": "commons-logging-1.2.jar",
+      "url": "https://repo.maven.apache.org/maven2/commons-logging/commons-logging/1.2/commons-logging-1.2.jar",
+      "path": ".work/tools/pinning-expansion/commons-logging-1.2.jar",
+      "sha256": "daddea1ea0be0f56978ab3006b8ac92834afeefbd9b7e4e6316fca57df0fa636",
+      "size": 61829
+    },
+    {
+      "name": "commons-codec-1.15.jar",
+      "url": "https://repo.maven.apache.org/maven2/commons-codec/commons-codec/1.15/commons-codec-1.15.jar",
+      "path": ".work/tools/pinning-expansion/commons-codec-1.15.jar",
+      "sha256": "b3e9f6d63a790109bf0d056611fbed1cf69055826defeb9894a71369d246ed63",
+      "size": 353793
+    },
+    {
+      "name": "cronet-embedded-119.6045.31.aar",
+      "url": "https://dl.google.com/dl/android/maven2/org/chromium/net/cronet-embedded/119.6045.31/cronet-embedded-119.6045.31.aar",
+      "path": ".work/tools/pinning-expansion/cronet-embedded-119.6045.31.aar",
+      "sha256": "deb86f6461464bd0f055284495b511f3f965066c4db334c9897dd6385586ffd8",
+      "size": 11125982
+    },
+    {
+      "name": "testossl-3.0.16.so",
+      "path": "/home/water/workspace/pinning-haters/tools/reference-libs/boringssl-negative/testossl-3.0.16.so",
+      "sha256": "4cac0f63cb4b438dd0ecfd074ec16c2baf1039bdee442cb3b5fbedc7a037d2b5",
+      "size": 5679960,
+      "source": "pinning-haters own test-app OpenSSL fixture; read-only test input, not a production dependency"
+    },
+    {
+      "name": "testossl-3.4.1.so",
+      "path": "/home/water/workspace/pinning-haters/tools/reference-libs/boringssl-negative/testossl-3.4.1.so",
+      "sha256": "a8dfe1d8f0a0d0064a53cb1e30eb4e0d3ff4137752c513c6633c1768b73d89b9",
+      "size": 7142048,
+      "source": "pinning-haters own test-app OpenSSL fixture; read-only test input, not a production dependency"
+    },
+    {
+      "name": "cronet-api-119.6045.31.aar",
+      "url": "https://dl.google.com/dl/android/maven2/org/chromium/net/cronet-api/119.6045.31/cronet-api-119.6045.31.aar",
+      "path": ".work/tools/pinning-expansion/cronet-api-119.6045.31.aar",
+      "sha256": "127c2e99e6eef43379687c6b080926f7d1c3536ac99b956b92dee5d5db83e6b7",
+      "size": 50582
+    },
+    {
+      "name": "cronet-common-119.6045.31.aar",
+      "url": "https://dl.google.com/dl/android/maven2/org/chromium/net/cronet-common/119.6045.31/cronet-common-119.6045.31.aar",
+      "path": ".work/tools/pinning-expansion/cronet-common-119.6045.31.aar",
+      "sha256": "67bd54efea91e1b454e92c67cce8bae5b2870b56d1f65edcd044f559d953d2c3",
+      "size": 37844
+    },
+    {
+      "name": "protobuf-javalite-3.22.3.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/google/protobuf/protobuf-javalite/3.22.3/protobuf-javalite-3.22.3.jar",
+      "path": ".work/tools/pinning-expansion/protobuf-javalite-3.22.3.jar",
+      "sha256": "9d26bebd2607fd0553cedbfc3e4a3d3f06c6e7a207d2b74c87fa6181838ed1bf",
+      "size": 713936
+    },
+    {
+      "name": "jsr305-3.0.1.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/google/code/findbugs/jsr305/3.0.1/jsr305-3.0.1.jar",
+      "path": ".work/tools/pinning-expansion/jsr305-3.0.1.jar",
+      "sha256": "c885ce34249682bc0236b4a7d56efcc12048e6135a5baf7a9cde8ad8cda13fcd",
+      "size": 19943
+    },
+    {
+      "name": "androidx-core-1.15.0.jar",
+      "path": ".work/tools/pinning-expansion/androidx-core-1.15.0.jar",
+      "sha256": "e4d3c02d3d3cc92f0c6d59df0a7c7d8faa04936aeabaa4f5f3e55c050f076d9b",
+      "source": "existing pinned core-1.15.0.aar classes.jar"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "schema_version": 1,
+  "api": 30,
+  "flags_sha256": "a19d839f4f61dc9c94960ae977b2e0f3eb30f880ba1ffe5108e790010b477a56",
+  "members": {
+    "Landroid/content/res/ApkAssets;->close()V": [
+      "blacklist"
+    ],
+    "Landroid/content/res/ApkAssets;->getAssetPath()Ljava/lang/String;": [
+      "greylist"
+    ],
+    "Landroid/content/res/ApkAssets;->loadFromPath(Ljava/lang/String;)Landroid/content/res/ApkAssets;": [
+      "greylist-max-o"
+    ],
+    "Landroid/content/res/AssetManager$Builder;-><init>()V": [
+      "greylist-max-o"
+    ],
+    "Landroid/content/res/AssetManager$Builder;->addApkAssets(Landroid/content/res/ApkAssets;)Landroid/content/res/AssetManager$Builder;": [
+      "greylist-max-o"
+    ],
+    "Landroid/content/res/AssetManager$Builder;->build()Landroid/content/res/AssetManager;": [
+      "greylist-max-o"
+    ]
+  },
+  "access_mode": "already pinned process-local bypass from identity bootstrap"
+}

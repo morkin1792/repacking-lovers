@@ -1,0 +1,49 @@
+{
+  "commit": "4a60ac648bf448c5a7596437243bcd0b9376fdf0",
+  "export_patch": {
+    "path": "tools/blutter-export.patch",
+    "sha256": "623f27e20417ad97c2d7cae7566bce8c32a72dd510e37c714ae8c294fee9f557"
+  },
+  "license": "MIT",
+  "optional": true,
+  "runtimes": [
+    {
+      "abi": "arm64-v8a",
+      "analyzer": {
+        "path": ".work/tools/blutter/bin/blutter_dartvm3.0.6_android_arm64",
+        "sha256": "6e192ed29bfdea6d5b288917763011ffecfe95dd5f0723ba9ede29fd94b7b097"
+      },
+      "dart_version": "3.0.6",
+      "flags": "product no-code_comments no-dwarf_stack_traces_mode no-lazy_dispatchers dedup_instructions no-asserts arm64 android compressed-pointers null-safety",
+      "snapshot_hash": "90b56a561f70cd55e972cb49b79b3d8b"
+    }
+  ],
+  "schema_version": 1,
+  "source_files": {
+    "LICENSE": {
+      "original_sha256": "32a34d62b373630361bfaef9aa4ea25d47677f5eac2e32c735a56f39f422cfae",
+      "prepared_sha256": "32a34d62b373630361bfaef9aa4ea25d47677f5eac2e32c735a56f39f422cfae"
+    },
+    "blutter.py": {
+      "original_sha256": "6d84a7decb7502c17c340cb2e5033ce40203cca57a950b1110a266e3726d1466",
+      "prepared_sha256": "6d84a7decb7502c17c340cb2e5033ce40203cca57a950b1110a266e3726d1466"
+    },
+    "blutter/src/DartDumper.cpp": {
+      "original_sha256": "d39f83e46c67dbbeb2f573d6f14348b6817b57a9741decba3f300e1294c1858c",
+      "prepared_sha256": "518e96095cafe885ed6537071b184c851f1598341c2915823bc06619a97a15a2"
+    },
+    "dartvm_fetch_build.py": {
+      "original_sha256": "7d13008feff3743260232acbf0da83ecf28e4662176dbdf8f1c6473cc522dec0",
+      "prepared_sha256": "7d13008feff3743260232acbf0da83ecf28e4662176dbdf8f1c6473cc522dec0"
+    },
+    "extract_dart_info.py": {
+      "original_sha256": "63ee0645894f37b45248f0c85f0dbdfce2aa3ce89603c6971c6dc2743190a23d",
+      "prepared_sha256": "63ee0645894f37b45248f0c85f0dbdfce2aa3ce89603c6971c6dc2743190a23d"
+    },
+    "scripts/CMakeLists.txt": {
+      "original_sha256": "9fca345f95281a89bead1baf74f92a70e84b1332941cb4b3780b64a020e30243",
+      "prepared_sha256": "9fca345f95281a89bead1baf74f92a70e84b1332941cb4b3780b64a020e30243"
+    }
+  },
+  "upstream": "https://github.com/worawit/blutter"
+}

@@ -1,0 +1,50 @@
+diff --git a/blutter/src/DartDumper.cpp b/blutter/src/DartDumper.cpp
+index 85bde37..55d85f5 100644
+--- a/blutter/src/DartDumper.cpp
++++ b/blutter/src/DartDumper.cpp
+@@ -304,6 +304,20 @@ void DartDumper::DumpCode(const char* out_dir)
+ 	std::filesystem::create_directory(out_dir);
+ 
+ 	Disassembler disasmer;
++    // Repack exporter v1: typed function metadata only; no generated hooks run.
++    std::ofstream repackMeta(std::filesystem::path(out_dir).parent_path() / "repack-functions.tsv");
++    const intptr_t repackTrue = (intptr_t)dart::Bool::True().ptr() - (intptr_t)dart::Object::null();
++    repackMeta << "bool_true_from_null\t" << repackTrue << "\n";
++    repackMeta << "null_register\t" << (int)dart::NULL_REG << "\n";
++    const auto* repackTable = dart::IsolateGroup::Current()->dispatch_table();
++    auto* repackEquality = repackTable && dart::DispatchTable::kOriginElement + dart::kOneByteStringCid < repackTable->length()
++        ? app.GetFunction(repackTable->ArrayOrigin()[dart::kOneByteStringCid] - app.base()) : nullptr;
++    repackMeta << "string_equality_gdt_zero\t" << (repackEquality && repackEquality->Name() == "==" ? 1 : 0) << "\n";
++    auto repackHex = [](const std::string& text) {
++        static const char digits[] = "0123456789abcdef"; std::string result;
++        for (unsigned char c : text) { result += digits[c >> 4]; result += digits[c & 15]; }
++        return result;
++    };
+ 
+ 	for (auto dartLib : app.libs) {
+ 		if (dartLib->isInternal)
+@@ -325,6 +339,24 @@ void DartDumper::DumpCode(const char* out_dir)
+ 			if (!dartCls->Functions().empty())
+ 				of << "\n";
+ 			for (auto dartFn : dartCls->Functions()) {
++                if (!dartFn->IsNative() && !dartFn->IsFfi() && dartFn->Size() > 0 && dartFn->Ptr() != dart::Function::null()) {
++                    auto& function = dart::Function::Handle(dartFn->Ptr());
++                    const auto signaturePtr = function.signature();
++                    std::string returnType = "unknown", types;
++                    if (signaturePtr.IsHeapObject()) {
++                        const auto& signature = dart::FunctionType::Handle(signaturePtr);
++                        if (!signature.IsNull()) {
++                            returnType = dartFn->Signature().ReturnType()->ToString();
++                            for (auto& parameter : dartFn->Params()) if (parameter.type) types += parameter.type->ToString() + ";";
++                        }
++                    }
++                    const auto& code = dart::Code::Handle(function.CurrentCode());
++                    intptr_t unchecked = dartFn->Address() + code.UncheckedEntryPoint() - code.EntryPoint();
++                    repackMeta << std::hex << dartFn->Address() << "\t" << unchecked << "\t" << dartFn->MonomorphicAddress()
++                        << "\t" << dartFn->PayloadAddress() << "\t" << dartFn->PayloadSize() << std::dec
++                        << "\t" << dartFn->IsAsync() << "\t" << repackHex(returnType)
++                        << "\t" << repackHex(types) << "\t" << repackHex(dartFn->FullName()) << "\n";
++                }
+ 				dartFn->PrintHead(of);
+ 
+ #ifndef NO_CODE_ANALYSIS

@@ -1,0 +1,51 @@
+{
+  "archive": ".work/tools/android-ndk-r28c-linux.zip",
+  "build_system": "clang --target, no CMake dependency",
+  "fixture_abis": [
+    "arm64-v8a",
+    "x86_64"
+  ],
+  "inputs": [
+    {
+      "path": ".work/tools/android-ndk-r28c/source.properties",
+      "sha256": "c00aa236fdb205e9be9edd9e2169763e48aca52735efff4e16f34205d49783b5"
+    },
+    {
+      "path": ".work/tools/android-ndk-r28c/toolchains/llvm/prebuilt/linux-x86_64/sysroot/usr/include/jni.h",
+      "sha256": "5df9074457c041b372f2c68ff646d6e8600cd673a223885e8df21c44c94ec667"
+    },
+    {
+      "path": ".work/tools/android-ndk-r28c/NOTICE",
+      "sha256": "faf0dc52cf6ce9ab09a04b0c074a378dd2565ee1ed9bc1179d83793bcdba012e"
+    }
+  ],
+  "license": "NDK NOTICE and package licenses retained in the verified distribution",
+  "linker_max_page_size": 16384,
+  "min_sdk": 28,
+  "path": ".work/tools/android-ndk-r28c",
+  "release": "r28c",
+  "repository_metadata": ".work/inputs/ndk-28.2.repository.xml",
+  "schema_version": 1,
+  "sha1_official": "a7b54a5de87fecd125a17d54f73c446199e72a64",
+  "sha256": "dfb20d396df28ca02a8c708314b814a4d961dc9074f9a161932746f815aa552f",
+  "size": 722261334,
+  "source_url": "https://dl.google.com/android/repository/android-ndk-r28c-linux.zip",
+  "tools": {
+    "clang": {
+      "path": ".work/tools/android-ndk-r28c/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+      "sha256": "6156dd4e5e466333197a00b8d20bca72c292186643b749dcaaa3aa9164afb1de",
+      "version_output": "Android (13624864, +pgo, +bolt, +lto, +mlgo, based on r530567e) clang version 19.0.1 (https://android.googlesource.com/toolchain/llvm-project 97a699bf4812a18fb657c2779f5296a4ab2694d2)\nTarget: x86_64-unknown-linux-gnu\nThread model: posix\nInstalledDir: /home/water/workspace/Projects/repacking-lovers/.work/tools/android-ndk-r28c/toolchains/llvm/prebuilt/linux-x86_64/bin"
+    },
+    "ld.lld": {
+      "path": ".work/tools/android-ndk-r28c/toolchains/llvm/prebuilt/linux-x86_64/bin/ld.lld",
+      "sha256": "0bb0398c038e4c8b5e01e61061f6d9349961fb495efb4cbf2552e36058acf0be",
+      "version_output": "LLD 19.0.1 (compatible with GNU linkers)"
+    },
+    "llvm-readelf": {
+      "path": ".work/tools/android-ndk-r28c/toolchains/llvm/prebuilt/linux-x86_64/bin/llvm-readelf",
+      "sha256": "2a28d786027488ebd0e260efe59d15c5dedb939eacbae34a6a9065a3a2f6d054",
+      "version_output": "LLVM (http://llvm.org/):\n  LLVM version 19.0.1 (/mnt/disks/build-disk/src/android/llvm-r530567/out/llvm-project/llvm 97a699bf4812a18fb657c2779f5296a4ab2694d2)\n  Optimized build."
+    }
+  },
+  "version": "28.2.13676358"
+}

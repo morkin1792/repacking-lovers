@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "test_only": true,
+  "host": "linux-x86_64",
+  "artifacts": [
+    {
+      "name": "okhttp-3.14.9.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/squareup/okhttp3/okhttp/3.14.9/okhttp-3.14.9.jar",
+      "sha256": "2570fab55515cbf881d7a4ceef49fc515490bc027057e666776a2832465aeca0",
+      "path": ".work/tools/pinning-extension-upstream/okhttp-3.14.9.jar",
+      "size": 430488
+    },
+    {
+      "name": "ct-2.8.4.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/appmattus/certificatetransparency/certificatetransparency/2.8.4/certificatetransparency-2.8.4.jar",
+      "sha256": "45d6a363793d02e6deadcdfdd701fa767b5df291308a4b2ec355f70183327d3a",
+      "path": ".work/tools/pinning-extension-upstream/ct-2.8.4.jar",
+      "size": 542072
+    },
+    {
+      "name": "conscrypt-2.5.2.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/conscrypt/conscrypt-openjdk-uber/2.5.2/conscrypt-openjdk-uber-2.5.2.jar",
+      "sha256": "eaf537d98e033d0f0451cd1b8cc74e02d7b55ec882da63c88060d806ba89c348",
+      "path": ".work/tools/pinning-extension-upstream/conscrypt-2.5.2.jar",
+      "size": 4534256
+    },
+    {
+      "name": "dex-tools-v2.4.zip",
+      "url": "https://github.com/pxb1988/dex2jar/releases/download/v2.4/dex-tools-v2.4.zip",
+      "sha256": "ee7c45eb3c1d2474a6145d8d447e651a736a22d9664b6d3d3be5a5a817dda23a",
+      "path": ".work/tools/pinning-extension-upstream/dex-tools-v2.4.zip",
+      "size": 19105975
+    },
+    {
+      "name": "kotlin-compiler-embeddable-1.9.10.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-compiler-embeddable/1.9.10/kotlin-compiler-embeddable-1.9.10.jar",
+      "path": ".work/tools/pinning-extension-upstream/kotlin-compiler-embeddable-1.9.10.jar",
+      "sha256": "b6d3965fdb3fc2a5f8d965681c215c37552b28ae5ad19fcadbc1568c9b65dab4",
+      "size": 58549627
+    },
+    {
+      "name": "kotlin-script-runtime-1.9.10.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-script-runtime/1.9.10/kotlin-script-runtime-1.9.10.jar",
+      "path": ".work/tools/pinning-extension-upstream/kotlin-script-runtime-1.9.10.jar",
+      "sha256": "2a6087375be9bdfaaadb4ba4be9833bba0de8edab1255c916642acaabfd20932",
+      "size": 43291
+    },
+    {
+      "name": "kotlin-reflect-1.6.10.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-reflect/1.6.10/kotlin-reflect-1.6.10.jar",
+      "path": ".work/tools/pinning-extension-upstream/kotlin-reflect-1.6.10.jar",
+      "sha256": "3277ac102ae17aad10a55abec75ff5696c8d109790396434b496e75087854203",
+      "size": 3038560
+    },
+    {
+      "name": "kotlin-daemon-embeddable-1.9.10.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/jetbrains/kotlin/kotlin-daemon-embeddable/1.9.10/kotlin-daemon-embeddable-1.9.10.jar",
+      "path": ".work/tools/pinning-extension-upstream/kotlin-daemon-embeddable-1.9.10.jar",
+      "sha256": "79bd4bf388da4430b0a9be86d2f72a111110941965edd478e99f3ae083156116",
+      "size": 397496
+    },
+    {
+      "name": "trove4j-1.0.20200330.jar",
+      "url": "https://repo.maven.apache.org/maven2/org/jetbrains/intellij/deps/trove4j/1.0.20200330/trove4j-1.0.20200330.jar",
+      "path": ".work/tools/pinning-extension-upstream/trove4j-1.0.20200330.jar",
+      "sha256": "c5fd725bffab51846bf3c77db1383c60aaaebfe1b7fe2f00d23fe1b7df0a439d",
+      "size": 572985
+    },
+    {
+      "name": "fixture-jre17.tar.gz",
+      "url": "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.13%2B11/OpenJDK17U-jre_x64_linux_hotspot_17.0.13_11.tar.gz",
+      "sha256": "4086cc7cb2d9e7810141f255063caad10a8a018db5e6b47fa5394c506ab65bff",
+      "path": ".work/tools/pinning-extension-upstream/fixture-jre17.tar.gz",
+      "size": 46082619
+    },
+    {
+      "name": "okio-1.17.2.jar",
+      "url": "https://repo.maven.apache.org/maven2/com/squareup/okio/okio/1.17.2/okio-1.17.2.jar",
+      "path": ".work/tools/pinning-extension-upstream/okio-1.17.2.jar",
+      "sha256": "f80ce42d2ffac47ad4c47e1d6f980d604d247ceb1a886705cf4581ab0c9fe2b8",
+      "size": 91980
+    },
+    {
+      "name": "http_certificate_pinning.tar.gz",
+      "url": "https://pub.dev/api/archives/http_certificate_pinning-3.0.2.tar.gz",
+      "path": ".work/tools/pinning-extension-upstream/http_certificate_pinning.tar.gz",
+      "sha256": "a7803cdca6cb5e676dc621e92dc95bd8b3d0ae84a8b0520e5e0b52693a95da1e",
+      "size": 52918,
+      "version": "3.0.2",
+      "kind": "plugin-source"
+    },
+    {
+      "name": "ssl_pinning_plugin.tar.gz",
+      "url": "https://pub.dev/api/archives/ssl_pinning_plugin-2.0.0.tar.gz",
+      "path": ".work/tools/pinning-extension-upstream/ssl_pinning_plugin.tar.gz",
+      "sha256": "b7b283753280c673612353439ef7bb6d70d08dc7054ce27274056c3fe51b6cba",
+      "size": 215040,
+      "version": "2.0.0",
+      "kind": "plugin-source"
+    },
+    {
+      "name": "conscrypt-android-2.5.2.aar",
+      "url": "https://repo.maven.apache.org/maven2/org/conscrypt/conscrypt-android/2.5.2/conscrypt-android-2.5.2.aar",
+      "sha256": "42d18979caf53f5ef68548c76d4c98b41adb910a32ad9448133f9c5b20bd65a3",
+      "path": ".work/tools/pinning-extension-upstream/conscrypt-android-2.5.2.aar",
+      "size": 3749861
+    }
+  ]
+}

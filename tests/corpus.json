@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "fixtures": [
+    {
+      "id": "app-own",
+      "package": "dev.repack.fixture.identity",
+      "variant": "own"
+    },
+    {
+      "id": "other-own",
+      "package": "dev.repack.fixture.other",
+      "variant": "own"
+    },
+    {
+      "id": "app-androidx",
+      "package": "dev.repack.fixture.identity",
+      "variant": "androidx"
+    },
+    {
+      "id": "other-androidx",
+      "package": "dev.repack.fixture.other",
+      "variant": "androidx"
+    }
+  ],
+  "cases": [
+    {
+      "id": "T-A00",
+      "oracle": "host-exported-DER-plus-verified-APK-signer",
+      "paths": [
+        "direct-legacy",
+        "direct-current",
+        "reflect-legacy",
+        "reflect-current"
+      ]
+    },
+    {
+      "id": "T-A10",
+      "oracle": "actual-genuine-reference-installs-plus-host-verified-certs-and-lineage",
+      "profiles": [
+        "single",
+        "multi-v2",
+        "rotated-v3"
+      ],
+      "pairs": 7,
+      "comparisons": 362
+    },
+    {
+      "id": "T-A11",
+      "oracle": "public-before-after-retained-snapshots-and-compatible-update-private-sentinel",
+      "paths": [
+        "no-clear",
+        "clear",
+        "compatible-update-input-invalidation"
+      ],
+      "cache_hit_claim": "requires observed cache hit; unset nonce is a named gap"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+# Preserve upstream context whitespace in this checksum-pinned patch.
+tools/blutter-export.patch -whitespace

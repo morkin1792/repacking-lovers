@@ -1,0 +1,140 @@
+{
+  "api": 30,
+  "cache_cells": {
+    "API30": {
+      "clear": "one process-local PropertyInvalidatedCache.clear; never global invalidation",
+      "current_user_only": true,
+      "prewarmed_hit": "must be observed; nonce 0 / cache miss narrows support",
+      "query_flags": [
+        "none",
+        "GET_SIGNATURES",
+        "GET_SIGNING_CERTIFICATES",
+        "both"
+      ],
+      "retained_results": "not mutated; real signer remains visible",
+      "typed_long_overloads": "absent on API30"
+    }
+  },
+  "members": [
+    {
+      "descriptor": "Landroid/app/PropertyInvalidatedCache;->clear()V",
+      "expected_flags": [
+        "blacklist"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/BaseParceledListSlice;->getList()Ljava/util/List;",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->checkSignatures(Ljava/lang/String;Ljava/lang/String;)I",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->checkUidSignatures(II)I",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->getInstallSourceInfo(Ljava/lang/String;)Landroid/content/pm/InstallSourceInfo;",
+      "expected_flags": [
+        "blacklist"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->getInstalledPackages(II)Landroid/content/pm/ParceledListSlice;",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->getPackageInfo(Ljava/lang/String;II)Landroid/content/pm/PackageInfo;",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->getPackagesForUid(I)[Ljava/lang/String;",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->getPackagesHoldingPermissions([Ljava/lang/String;II)Landroid/content/pm/ParceledListSlice;",
+      "expected_flags": [
+        "greylist-max-o"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->hasSigningCertificate(Ljava/lang/String;[BI)Z",
+      "expected_flags": [
+        "greylist-max-o"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/IPackageManager;->hasUidSigningCertificate(I[BI)Z",
+      "expected_flags": [
+        "greylist-max-o"
+      ]
+    },
+    {
+      "descriptor": "Landroid/content/pm/ParceledListSlice;-><init>(Ljava/util/List;)V",
+      "expected_flags": [
+        "greylist"
+      ]
+    }
+  ],
+  "rules": {
+    "cache": "no global property invalidation; optional one clear of this process cache at controlled late publication.",
+    "comparison": "preserve unknown/visibility result; exact current sets first, then oldest history signer if either rotates, per API30 PMS.",
+    "installer": "preserve measured installer of record with -i; no blanket InstallSourceInfo replacement.",
+    "list": "materialize real ParceledListSlice; clone only self signing fields; preserve order and other entries.",
+    "package_predicate": "self/current user only; raw DER or SHA256 DER. Multiple-current-signers return false per API30 framework.",
+    "uid_predicate": "self UID only when getPackagesForUid returns exactly this package; shared/cross-user UIDs forwarded as unsupported."
+  },
+  "scenarios": [
+    "single",
+    "multi-v2",
+    "rotated-v3"
+  ],
+  "schema_version": 1,
+  "source_revision": "android-11.0.0_r48",
+  "sources": [
+    {
+      "path": ".work/inputs/PackageParser-api30.java",
+      "sha256": "3477b66f9fbc49531cb2819f54f7a47137e1fed9b5cc82a488704135dbb13714",
+      "source_url": "https://android.googlesource.com/platform/frameworks/base/+/android-11.0.0_r48/core/java/android/content/pm/PackageParser.java"
+    },
+    {
+      "path": ".work/inputs/SigningInfo-api30.java",
+      "sha256": "5d37891db74f8f1465e842127f3c3b083d0ec58a8fd1010e59c88e1166b81368",
+      "source_url": "https://android.googlesource.com/platform/frameworks/base/+/android-11.0.0_r48/core/java/android/content/pm/SigningInfo.java"
+    },
+    {
+      "path": ".work/inputs/Signature-api30.java",
+      "sha256": "73e848250202a36edffb913c38111820007faa8cd2fd6a72c83d60c494e82960",
+      "source_url": "https://android.googlesource.com/platform/frameworks/base/+/android-11.0.0_r48/core/java/android/content/pm/Signature.java"
+    },
+    {
+      "path": ".work/inputs/PackageManagerService-api30.java",
+      "sha256": "d1030732170de8437b3118d30f9c62e7fafbee9e420435af3ffc2e7e958f2b24",
+      "source_url": "https://android.googlesource.com/platform/frameworks/base/+/android-11.0.0_r48/services/core/java/com/android/server/pm/PackageManagerService.java"
+    },
+    {
+      "path": ".work/inputs/PackageManager-api30.java",
+      "sha256": "26c6e14d4d8959ceac1276d1a049a064381277c9aeb6053d68ff6ea589061774",
+      "source_url": "https://android.googlesource.com/platform/frameworks/base/+/android-11.0.0_r48/core/java/android/content/pm/PackageManager.java"
+    },
+    {
+      "path": ".work/inputs/PropertyInvalidatedCache-api30.java",
+      "sha256": "5a6294e7ee00e585dfea8d389fbf54c6dc98b42038067541b136ab91eaef8584",
+      "source_url": "https://android.googlesource.com/platform/frameworks/base/+/android-11.0.0_r48/core/java/android/app/PropertyInvalidatedCache.java"
+    }
+  ],
+  "state": "implemented-api30-evidence-required"
+}

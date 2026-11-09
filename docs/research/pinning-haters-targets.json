@@ -1,0 +1,757 @@
+{
+  "current_apk_engine": {
+    "constant_returns": [
+      "void",
+      "true"
+    ],
+    "false_return": false,
+    "known_matcher_families": [
+      "okhttp4-lazy-check",
+      "x509-pinning-trust-manager",
+      "pinning-hostname-verifier"
+    ],
+    "object_return_templates": false,
+    "static_candidates_default": "rejected"
+  },
+  "device_actions": false,
+  "java_family_counts": {
+    "app-owned-chromium": 2,
+    "bundled-conscrypt": 4,
+    "certificate-transparency": 4,
+    "flutter-java-plugin": 2,
+    "hostname-verification": 6,
+    "okhttp": 4
+  },
+  "java_target_count": 22,
+  "midway_input_inspection": {
+    "path": "/home/water/workspace/Projects/repacking-lovers/.work/evidence/runs/20261106T181249-80017e10ed/p0/dex-0/dex-inspect.stdout.log",
+    "scope": "Original Midway1.85 app-owned DEX, static presence only",
+    "sha256": "ee64f2992efe476ad35b2ed74f3de2bac1686c372376cb15c85cadd2b487a8bd"
+  },
+  "module_runtime_marker_count": 6,
+  "module_runtime_markers_are_not_patch_implementations": true,
+  "native_target_count_is_not_a_count_of_new_apk_bypasses": true,
+  "native_target_row_count": 21,
+  "native_target_rows": [
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libz.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 29,
+      "surface": "JAVA_DEX",
+      "symbol_or_contract": "adler32"
+    },
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "ld-android.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 36,
+      "surface": "DEFERRED_LOAD",
+      "symbol_or_contract": "__loader_dlopen"
+    },
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "ld-android.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 39,
+      "surface": "DEFERRED_LOAD",
+      "symbol_or_contract": "__loader_android_dlopen_ext"
+    },
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libc.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 46,
+      "surface": "AOT",
+      "symbol_or_contract": "stat"
+    },
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libc.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 48,
+      "surface": "AOT",
+      "symbol_or_contract": "fstatat"
+    },
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libc.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 50,
+      "surface": "AOT",
+      "symbol_or_contract": "open"
+    },
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libc.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 52,
+      "surface": "AOT",
+      "symbol_or_contract": "__open_2"
+    },
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libc.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 54,
+      "surface": "AOT",
+      "symbol_or_contract": "openat"
+    },
+    {
+      "apk_adaptation_status": "excluded-runtime-infrastructure",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libc.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 56,
+      "surface": "AOT",
+      "symbol_or_contract": "access"
+    },
+    {
+      "apk_adaptation_status": "external-platform-mechanism-not-an-owned-apk-target",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libssl.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 60,
+      "surface": "PLATFORM_TLS",
+      "symbol_or_contract": "SSL_set_custom_verify"
+    },
+    {
+      "apk_adaptation_status": "external-platform-mechanism-not-an-owned-apk-target",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libssl.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 63,
+      "surface": "PLATFORM_TLS",
+      "symbol_or_contract": "SSL_CTX_set_custom_verify"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libssl.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 70,
+      "surface": "BUNDLED_TLS",
+      "symbol_or_contract": "SSL_CTX_set_verify"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libssl.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 72,
+      "surface": "BUNDLED_TLS",
+      "symbol_or_contract": "SSL_set_verify"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libssl.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 74,
+      "surface": "BUNDLED_TLS",
+      "symbol_or_contract": "SSL_CTX_set_custom_verify"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libssl.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 77,
+      "surface": "BUNDLED_TLS",
+      "symbol_or_contract": "SSL_set_custom_verify"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libssl.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 79,
+      "surface": "BUNDLED_TLS",
+      "symbol_or_contract": "SSL_CTX_set_cert_verify_callback"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libssl.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 82,
+      "surface": "BUNDLED_TLS",
+      "symbol_or_contract": "SSL_get_verify_result"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libcrypto.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 85,
+      "surface": "BUNDLED_TLS",
+      "symbol_or_contract": "X509_verify_cert"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "libflutter.so",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 93,
+      "surface": "FLUTTER",
+      "symbol_or_contract": "ssl_crypto_x509_session_verify_cert_chain"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "<app-private library>",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 96,
+      "surface": "STATIC_BORINGSSL",
+      "symbol_or_contract": "ssl_crypto_x509_session_verify_cert_chain"
+    },
+    {
+      "apk_adaptation_status": "native-apk-adapter-research-only",
+      "implemented_by_this_review": false,
+      "provider_or_scope": "<app-private library>",
+      "source_file": "module/jni/hooks/targets_native.cpp",
+      "source_line": 103,
+      "surface": "STATIC_OPENSSL",
+      "symbol_or_contract": "ssl_connect"
+    }
+  ],
+  "production_changes": false,
+  "purpose": "Advisory APK-adaptation inventory; not consumed by the patch engine",
+  "review_date": "2026-11-07",
+  "schema_version": 1,
+  "source_commit": "5a9e044826cf239dbd61d479e0b80167632da06e",
+  "source_file_sha256": {
+    "AGENTS.md": "364e1cfb5bf8f10b1d4d73d7df2312fdf39119e7bdd9b9fd1299ef1adf84e62a",
+    "docs/coverage.md": "fc33647dce836d257b35ec5ae7a2c300dfcc0e0320897a9dfa28c87afc6b1cef",
+    "docs/known-limitations.md": "c0692a8412eb959f17247c5d36d1468c3eb0d4cb2a7bd0bd95c98d2ddd35d6e2",
+    "module/jni/dex/dex_patcher.cpp": "8de1a5cca57768820f590cea2377c0c2d58c661818ded906edfc8e8e838c0218",
+    "module/jni/hooks/targets.h": "b4ca8fa03e9cf7caf1df3176fd65f6c3b8e814d84e11b34ef032364e1fab3c57",
+    "module/jni/hooks/targets_java.cpp": "fe720a3837f04132d330ca129854f13af2ada01e65cd7a017220aa61d5c0d72b",
+    "module/jni/hooks/targets_native.cpp": "1491a4dd68c7b8dd181ac24011c175cffb150910332dad2b3c5cc4d6932f578b"
+  },
+  "source_repository": "/home/water/workspace/pinning-haters",
+  "source_repository_changes": false,
+  "targets": [
+    {
+      "descriptor": "(Ljava/lang/String;Ljava/util/List;)V",
+      "engine_or_recognition_gap": "Add List/Certificate[] shapes; verify delegation and body evidence",
+      "family": "okhttp",
+      "implemented_by_this_review": false,
+      "method": "check",
+      "midway_1_85_named_definition": {
+        "class_found": true,
+        "dex": "classes.dex",
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": {
+          "access_flags": 17,
+          "has_code": true,
+          "references": [
+            "Lkotlin/jvm/functions/Function0;",
+            "Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V",
+            "Lokhttp3/CertificatePinner$check$1;",
+            "Lokhttp3/CertificatePinner$check$1;-><init>(Lokhttp3/CertificatePinner;Ljava/util/List;Ljava/lang/String;)V",
+            "Lokhttp3/CertificatePinner;->check$okhttp(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V"
+          ]
+        },
+        "method_found": true
+      },
+      "owner": "Lokhttp3/CertificatePinner;",
+      "port_status": "partial-existing-family",
+      "priority": 1,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 23
+    },
+    {
+      "descriptor": "(Ljava/lang/String;[Ljava/security/cert/Certificate;)V",
+      "engine_or_recognition_gap": "Add List/Certificate[] shapes; verify delegation and body evidence",
+      "family": "okhttp",
+      "implemented_by_this_review": false,
+      "method": "check",
+      "midway_1_85_named_definition": {
+        "class_found": true,
+        "dex": "classes.dex",
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": {
+          "access_flags": 145,
+          "has_code": true,
+          "references": [
+            "Lkotlin/collections/ArraysKt;->toList([Ljava/lang/Object;)Ljava/util/List;",
+            "Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V",
+            "Lokhttp3/CertificatePinner;->check(Ljava/lang/String;Ljava/util/List;)V"
+          ]
+        },
+        "method_found": true
+      },
+      "owner": "Lokhttp3/CertificatePinner;",
+      "port_status": "partial-existing-family",
+      "priority": 1,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 25
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V",
+      "engine_or_recognition_gap": "Add List/Certificate[] shapes; verify delegation and body evidence",
+      "family": "okhttp",
+      "implemented_by_this_review": false,
+      "method": "check$okhttp",
+      "midway_1_85_named_definition": {
+        "class_found": true,
+        "dex": "classes.dex",
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": {
+          "access_flags": 17,
+          "has_code": true,
+          "references": [
+            "Ljava/lang/AssertionError;",
+            "Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V",
+            "Ljava/lang/StringBuilder;",
+            "Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V",
+            "Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;",
+            "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+            "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;",
+            "Ljava/security/Principal;->getName()Ljava/lang/String;",
+            "Ljava/security/cert/Certificate;",
+            "Ljava/security/cert/X509Certificate;",
+            "Ljava/security/cert/X509Certificate;->getSubjectDN()Ljava/security/Principal;",
+            "Ljava/util/Iterator;->hasNext()Z",
+            "Ljava/util/Iterator;->next()Ljava/lang/Object;",
+            "Ljava/util/List;",
+            "Ljava/util/List;->isEmpty()Z",
+            "Ljava/util/List;->iterator()Ljava/util/Iterator;",
+            "Ljavax/net/ssl/SSLPeerUnverifiedException;",
+            "Ljavax/net/ssl/SSLPeerUnverifiedException;-><init>(Ljava/lang/String;)V",
+            "Lkotlin/jvm/functions/Function0;->invoke()Ljava/lang/Object;",
+            "Lkotlin/jvm/internal/Intrinsics;->areEqual(Ljava/lang/Object;Ljava/lang/Object;)Z",
+            "Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V",
+            "Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V",
+            "Lokhttp3/CertificatePinner$Companion;->pin(Ljava/security/cert/Certificate;)Ljava/lang/String;",
+            "Lokhttp3/CertificatePinner$Companion;->sha1Hash(Ljava/security/cert/X509Certificate;)Lokio/ByteString;",
+            "Lokhttp3/CertificatePinner$Companion;->sha256Hash(Ljava/security/cert/X509Certificate;)Lokio/ByteString;",
+            "Lokhttp3/CertificatePinner$Pin;",
+            "Lokhttp3/CertificatePinner$Pin;->getHash()Lokio/ByteString;",
+            "Lokhttp3/CertificatePinner$Pin;->getHashAlgorithm()Ljava/lang/String;",
+            "Lokhttp3/CertificatePinner;->Companion:Lokhttp3/CertificatePinner$Companion;",
+            "Lokhttp3/CertificatePinner;->findMatchingPins(Ljava/lang/String;)Ljava/util/List;"
+          ]
+        },
+        "method_found": true
+      },
+      "owner": "Lokhttp3/CertificatePinner;",
+      "port_status": "partial-existing-family",
+      "priority": 1,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 27
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V",
+      "engine_or_recognition_gap": "Add List/Certificate[] shapes; verify delegation and body evidence",
+      "family": "okhttp",
+      "implemented_by_this_review": false,
+      "method": "check",
+      "midway_1_85_named_definition": {
+        "class_found": true,
+        "dex": "classes.dex",
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lokhttp3/CertificatePinner;",
+      "port_status": "partial-existing-family",
+      "priority": 1,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 29
+    },
+    {
+      "descriptor": "([[BLjava/lang/String;)V",
+      "engine_or_recognition_gap": "Require an app-owned implementation; allow static callback only per audited signature",
+      "family": "bundled-conscrypt",
+      "implemented_by_this_review": false,
+      "method": "verifyCertificateChain",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lorg/conscrypt/ConscryptEngine;",
+      "port_status": "proposed-not-implemented",
+      "priority": 2,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 43
+    },
+    {
+      "descriptor": "([[BLjava/lang/String;)V",
+      "engine_or_recognition_gap": "Require an app-owned implementation; allow static callback only per audited signature",
+      "family": "bundled-conscrypt",
+      "implemented_by_this_review": false,
+      "method": "verifyCertificateChain",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lorg/conscrypt/ConscryptFileDescriptorSocket;",
+      "port_status": "proposed-not-implemented",
+      "priority": 2,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 44
+    },
+    {
+      "descriptor": "([[BLjava/lang/String;)V",
+      "engine_or_recognition_gap": "Require an app-owned implementation; allow static callback only per audited signature",
+      "family": "bundled-conscrypt",
+      "implemented_by_this_review": false,
+      "method": "verifyCertificateChain",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lcom/google/android/gms/org/conscrypt/ConscryptEngine;",
+      "port_status": "proposed-not-implemented",
+      "priority": 2,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 45
+    },
+    {
+      "descriptor": "([[BLjava/lang/String;)V",
+      "engine_or_recognition_gap": "Require an app-owned implementation; allow static callback only per audited signature",
+      "family": "bundled-conscrypt",
+      "implemented_by_this_review": false,
+      "method": "verifyCertificateChain",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lcom/google/android/gms/org/conscrypt/ConscryptFileDescriptorSocket;",
+      "port_status": "proposed-not-implemented",
+      "priority": 2,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 46
+    },
+    {
+      "descriptor": "(Ljava/lang/String;)Z",
+      "engine_or_recognition_gap": "Needs explicit false result; interceptor fallback needs a request-preserving object-return template",
+      "family": "certificate-transparency",
+      "implemented_by_this_review": false,
+      "method": "enabledForCertificateTransparency",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lcom/appmattus/certificatetransparency/internal/verifier/CertificateTransparencyBase;",
+      "port_status": "proposed-not-implemented",
+      "priority": 2,
+      "replacement": "RETURN_FALSE",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 55
+    },
+    {
+      "descriptor": "(Lokhttp3/Interceptor$Chain;)Lokhttp3/Response;",
+      "engine_or_recognition_gap": "Needs explicit false result; interceptor fallback needs a request-preserving object-return template",
+      "family": "certificate-transparency",
+      "implemented_by_this_review": false,
+      "method": "intercept",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lcom/appmattus/certificatetransparency/internal/verifier/CertificateTransparencyInterceptor;",
+      "port_status": "proposed-not-implemented",
+      "priority": 2,
+      "replacement": "INTERCEPTOR_PROCEED",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 58
+    },
+    {
+      "descriptor": "(Ljava/lang/String;)Z",
+      "engine_or_recognition_gap": "Needs explicit false result; interceptor fallback needs a request-preserving object-return template",
+      "family": "certificate-transparency",
+      "implemented_by_this_review": false,
+      "method": "enabledForCertificateTransparency",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lcom/babylon/certificatetransparency/internal/verifier/CertificateTransparencyBase;",
+      "port_status": "proposed-not-implemented",
+      "priority": 2,
+      "replacement": "RETURN_FALSE",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 61
+    },
+    {
+      "descriptor": "(Lokhttp3/Interceptor$Chain;)Lokhttp3/Response;",
+      "engine_or_recognition_gap": "Needs explicit false result; interceptor fallback needs a request-preserving object-return template",
+      "family": "certificate-transparency",
+      "implemented_by_this_review": false,
+      "method": "intercept",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lcom/babylon/certificatetransparency/internal/verifier/CertificateTransparencyInterceptor;",
+      "port_status": "proposed-not-implemented",
+      "priority": 2,
+      "replacement": "INTERCEPTOR_PROCEED",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 64
+    },
+    {
+      "descriptor": "([[BLjava/lang/String;Ljava/lang/String;[B[B)Lorg/chromium/net/AndroidCertVerifyResult;",
+      "engine_or_recognition_gap": "Require verifier and helper definitions in selected app DEX; external WebView provider is outside the APK",
+      "family": "app-owned-chromium",
+      "implemented_by_this_review": false,
+      "method": "verifyServerCertificates",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lorg/chromium/net/AndroidNetworkLibrary;",
+      "port_status": "research-not-implemented",
+      "priority": 3,
+      "replacement": "CHROMIUM_TRUST_LEAF",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 77
+    },
+    {
+      "descriptor": "([[BLjava/lang/String;Ljava/lang/String;)Lorg/chromium/net/AndroidCertVerifyResult;",
+      "engine_or_recognition_gap": "Require verifier and helper definitions in selected app DEX; external WebView provider is outside the APK",
+      "family": "app-owned-chromium",
+      "implemented_by_this_review": false,
+      "method": "verifyServerCertificates",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lorg/chromium/net/AndroidNetworkLibrary;",
+      "port_status": "research-not-implemented",
+      "priority": 3,
+      "replacement": "CHROMIUM_TRUST_LEAF",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 80
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ILjava/lang/String;)Z",
+      "engine_or_recognition_gap": "Boolean true template exists; add constrained recognition and real plugin fixtures",
+      "family": "flutter-java-plugin",
+      "implemented_by_this_review": false,
+      "method": "checkConnexion",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Ldiefferson/http_certificate_pinning/HttpCertificatePinningPlugin;",
+      "port_status": "proposed-not-implemented",
+      "priority": 1,
+      "replacement": "RETURN_TRUE",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 89
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Ljava/util/List;Ljava/util/Map;ILjava/lang/String;Ljava/lang/String;)Z",
+      "engine_or_recognition_gap": "Boolean true template exists; add constrained recognition and real plugin fixtures",
+      "family": "flutter-java-plugin",
+      "implemented_by_this_review": false,
+      "method": "checkConnexion",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lcom/macif/plugin/sslpinningplugin/SslPinningPlugin;",
+      "port_status": "proposed-not-implemented",
+      "priority": 1,
+      "replacement": "RETURN_TRUE",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 92
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Ljavax/net/ssl/SSLSession;)Z",
+      "engine_or_recognition_gap": "Do not weaken normal hostname checks by default",
+      "family": "hostname-verification",
+      "implemented_by_this_review": false,
+      "method": "verify",
+      "midway_1_85_named_definition": {
+        "class_found": true,
+        "dex": "classes.dex",
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": {
+          "access_flags": 1,
+          "has_code": true,
+          "references": [
+            "Ljava/security/cert/X509Certificate;",
+            "Ljavax/net/ssl/SSLSession;->getPeerCertificates()[Ljava/security/cert/Certificate;",
+            "Lkotlin/jvm/internal/Intrinsics;->checkNotNull(Ljava/lang/Object;Ljava/lang/String;)V",
+            "Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V",
+            "Lokhttp3/internal/tls/OkHostnameVerifier;->isAscii(Ljava/lang/String;)Z",
+            "Lokhttp3/internal/tls/OkHostnameVerifier;->verify(Ljava/lang/String;Ljava/security/cert/X509Certificate;)Z"
+          ]
+        },
+        "method_found": true
+      },
+      "owner": "Lokhttp3/internal/tls/OkHostnameVerifier;",
+      "port_status": "separate-opt-in-proposal",
+      "priority": 4,
+      "replacement": "RETURN_TRUE",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 97
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Ljava/security/cert/X509Certificate;)Z",
+      "engine_or_recognition_gap": "Do not weaken normal hostname checks by default",
+      "family": "hostname-verification",
+      "implemented_by_this_review": false,
+      "method": "verify",
+      "midway_1_85_named_definition": {
+        "class_found": true,
+        "dex": "classes.dex",
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": {
+          "access_flags": 17,
+          "has_code": true,
+          "references": [
+            "Lkotlin/jvm/internal/Intrinsics;->checkNotNullParameter(Ljava/lang/Object;Ljava/lang/String;)V",
+            "Lokhttp3/internal/Util;->canParseAsIpAddress(Ljava/lang/String;)Z",
+            "Lokhttp3/internal/tls/OkHostnameVerifier;->verifyHostname(Ljava/lang/String;Ljava/security/cert/X509Certificate;)Z",
+            "Lokhttp3/internal/tls/OkHostnameVerifier;->verifyIpAddress(Ljava/lang/String;Ljava/security/cert/X509Certificate;)Z"
+          ]
+        },
+        "method_found": true
+      },
+      "owner": "Lokhttp3/internal/tls/OkHostnameVerifier;",
+      "port_status": "separate-opt-in-proposal",
+      "priority": 4,
+      "replacement": "RETURN_TRUE",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 99
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Ljavax/net/ssl/SSLSocket;)V",
+      "engine_or_recognition_gap": "Do not weaken normal hostname checks by default",
+      "family": "hostname-verification",
+      "implemented_by_this_review": false,
+      "method": "verify",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lorg/apache/http/conn/ssl/AbstractVerifier;",
+      "port_status": "separate-opt-in-proposal",
+      "priority": 4,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 103
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Ljava/security/cert/X509Certificate;)V",
+      "engine_or_recognition_gap": "Do not weaken normal hostname checks by default",
+      "family": "hostname-verification",
+      "implemented_by_this_review": false,
+      "method": "verify",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lorg/apache/http/conn/ssl/AbstractVerifier;",
+      "port_status": "separate-opt-in-proposal",
+      "priority": 4,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 105
+    },
+    {
+      "descriptor": "(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Z)V",
+      "engine_or_recognition_gap": "Do not weaken normal hostname checks by default",
+      "family": "hostname-verification",
+      "implemented_by_this_review": false,
+      "method": "verify",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lorg/apache/http/conn/ssl/AbstractVerifier;",
+      "port_status": "separate-opt-in-proposal",
+      "priority": 4,
+      "replacement": "RETURN_VOID",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 107
+    },
+    {
+      "descriptor": "(Ljava/lang/String;Ljavax/net/ssl/SSLSession;)Z",
+      "engine_or_recognition_gap": "Do not weaken normal hostname checks by default",
+      "family": "hostname-verification",
+      "implemented_by_this_review": false,
+      "method": "verify",
+      "midway_1_85_named_definition": {
+        "class_found": false,
+        "dex": null,
+        "interpretation": "Named definitions only; absence does not exclude obfuscation or external/runtime-loaded code",
+        "method": null,
+        "method_found": false
+      },
+      "owner": "Lorg/apache/http/conn/ssl/AbstractVerifier;",
+      "port_status": "separate-opt-in-proposal",
+      "priority": 4,
+      "replacement": "RETURN_TRUE",
+      "source_file": "module/jni/hooks/targets_java.cpp",
+      "source_line": 110
+    }
+  ]
+}

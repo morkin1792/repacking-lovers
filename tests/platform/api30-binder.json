@@ -1,0 +1,53 @@
+{
+  "api": 30,
+  "members": [
+    {
+      "csv_match": "matched",
+      "descriptor": "Landroid/os/ServiceManager;->sCache:Ljava/util/Map;",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "csv_match": "matched",
+      "descriptor": "Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "csv_match": "matched",
+      "descriptor": "Landroid/content/pm/IPackageManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/content/pm/IPackageManager;",
+      "expected_flags": [
+        "greylist"
+      ]
+    },
+    {
+      "csv_match": "matched",
+      "descriptor": "Landroid/content/pm/IPackageManager$Stub;->TRANSACTION_getPackageInfo:I",
+      "expected_flags": [
+        "greylist-max-o"
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "semantics": {
+    "death": "link/unlink forwarding tested; real system service death not triggered",
+    "retained": "stubs acquired before publication remain real",
+    "scope": "Java service-cache queryLocalInterface only",
+    "transact": "forward original bytes; raw replies retain installed signer"
+  },
+  "source_revision": "android-11.0.0_r48",
+  "sources": [
+    {
+      "path": ".work/inputs/ServiceManager-api30.java",
+      "sha256": "fed6d6d46a7b6a4810c612d169fd094468eca0d0414f047182c0cc5435813a28",
+      "source_url": "https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_base/android-11.0.0_r48/core/java/android/os/ServiceManager.java"
+    },
+    {
+      "path": ".work/inputs/IPackageManager-api30.aidl",
+      "sha256": "a6738a4e6b6ab412ea01668d5b0e9fc4b6da4f7974a1570102a62af25b80d942",
+      "source_url": "https://raw.githubusercontent.com/aosp-mirror/platform_frameworks_base/android-11.0.0_r48/core/java/android/content/pm/IPackageManager.aidl"
+    }
+  ]
+}

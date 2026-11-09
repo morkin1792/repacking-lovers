@@ -1,0 +1,53 @@
+# Local artifacts, captures, downloaded tools and machine configuration
+/.work/
+/workspace/
+/config/implementation-lock.json
+/output/
+/build/
+/dist/
+
+# Python environments and caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Credentials and signing material
+.env
+.env.*
+!.env.example
+*.key
+*.p8
+*.pfx
+*.jks
+*.keystore
+*.p12
+*.pass
+
+# Generated packages and compiled artifacts
+*.apk
+*.apks
+*.xapk
+*.aab
+*.ipa
+*.dex
+*.class
+*.jar
+*.so
+*.o
+
+# Runtime logs, traffic captures and editor/OS files
+*.log
+*.har
+*.pcap
+*.pcapng
+*.swp
+*.swo
+.DS_Store

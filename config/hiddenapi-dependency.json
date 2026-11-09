@@ -1,0 +1,33 @@
+{
+  "aar": {
+    "path": ".work/tools/hiddenapibypass-6.2/hiddenapibypass-6.2.aar",
+    "sha256": "dcdbd6fc8f70d722b06700cbe30888ded5d329bc3088d3ad92deddbdc8895db3",
+    "source_url": "https://repo.maven.apache.org/maven2/org/lsposed/hiddenapibypass/hiddenapibypass/6.2/hiddenapibypass-6.2.aar"
+  },
+  "classes": {
+    "path": ".work/tools/hiddenapibypass-6.2/classes.jar",
+    "sha256": "72ac984da7629f68e396c6fe54956cf71a05aa0834467cd592deeca72b2d6d8f"
+  },
+  "coordinate": "org.lsposed.hiddenapibypass:hiddenapibypass:6.2",
+  "implementation": "Unsafe HiddenApiBypass",
+  "license": {
+    "name": "Apache-2.0",
+    "path": ".work/tools/hiddenapibypass-6.2/LICENSE",
+    "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4",
+    "source_url": "https://raw.githubusercontent.com/LSPosed/AndroidHiddenApiBypass/main/LICENSE"
+  },
+  "module": {
+    "path": ".work/tools/hiddenapibypass-6.2/hiddenapibypass-6.2.module",
+    "sha256": "678edd457b27a6379f8bf4d08ba45a39d4e13ecbfb624f143098b6e71bc0e38f",
+    "source_url": "https://repo.maven.apache.org/maven2/org/lsposed/hiddenapibypass/hiddenapibypass/6.2/hiddenapibypass-6.2.module"
+  },
+  "pom": {
+    "path": ".work/tools/hiddenapibypass-6.2/hiddenapibypass-6.2.pom",
+    "sha256": "dfa547c4ad28a688508cb8ee3592265d193fec0ebea800a024837d31efe5789a",
+    "source_url": "https://repo.maven.apache.org/maven2/org/lsposed/hiddenapibypass/hiddenapibypass/6.2/hiddenapibypass-6.2.pom"
+  },
+  "prefixes": [
+    "L"
+  ],
+  "version": "6.2"
+}
