@@ -1,11 +1,111 @@
 # Implementation progress
 
-Current gate: additional APK pinning adapters
-State: accepted within the recorded API30/ARM64, target35 fixture scopes
-Last completed task: Chromium/Cronet with a native pin control, optional hostname/call-site edits, offline native TLS, typed Dart predicates, public CLI composition and126 passing host tests
-Evidence paths: [handoff](../../.work/evidence/PINNING-EXPANSION-handoff.json), [commands and exact limits](../pinning-expansion.md)
-Next task: operator-selected target/flow or new runtime evidence; login remains deferred
-Blocking prerequisite: none for the implemented adapters; foreign-runtime markers and unsupported Dart shapes are not generic bypasses
+Current gate: guided operator workflow and source-bundle release
+State: accepted for Linux x86_64 host setup and the recorded API30 fixture phone
+Last completed task: loading-only automatic setup, compact status badges, adaptive and checksum-verified APK downloads; 175 passing host tests
+Evidence paths: [guided workflow](../guided-workflow.md), [current browser checks](../../.work/gui-validation/workflow-v2/browser-result.json), [earlier handoff](../../.work/gui-validation/handoff.json)
+Next task: operator use of the guided release or the next platform/coverage milestone
+Blocking prerequisite: none for this common workflow; Python3.11+/JDK17+ are required, and advanced startup/native/Dart modes remain CLI-only
+
+## Loading presentation and interrupted APK reads — 2026-11-12
+
+- Automatic preparation shows a loading card while the setup form and its opener
+  are disabled/hidden. Missing-input/failed setup still exposes the form; ready
+  state exposes the workspace and optional manual setup. Browser assertions cover
+  preparing, ready and missing-input transitions.
+- Build badges stay compact and top/right aligned with long app names on desktop
+  and mobile: observed height21.39px at both1440px and375px widths. Failed states
+  use a separate, restrained error tint.
+- Reproduced the operator's failed source transfer independently of the GUI against
+  the same API30 Wi-Fi serial and218,343,927-byte APK. Plain pull failed at88%
+  after173.818s; uncompressed pull also failed. Legacy exec-out cat exited0 after
+  only16,424,960 bytes. Small shell commands remained usable between interruptions.
+  A specific ADB-daemon/network-driver defect is not established.
+- Added `repack/transfers.py`: non-PTY binary shell reads begin at1MiB, shrink on
+  retry down to64KiB, and retry the same offset up to five times. The selected
+  transport is given a bounded recovery wait; no shared-daemon restart or target
+  switch occurs. Partial data stays in staging. Exact chunk length, total size
+  and the phone's SHA-256 are required before publication.
+- The previously failing APK downloaded completely in204.73s, recovering from
+  three interrupted reads. All218,343,927 bytes matched SHA-256
+  `76ba7c4ba44e3a283291e1437f662a89652691ac9f7747e1d68ba1da9153e7d8`;
+  independent apksigner verification passed. No app was installed or launched.
+- 175 SDK-enabled host tests passed (264.571s), including zero-exit short reads,
+  wrong final hashes, adaptive offsets, bounded retries, explicit serials and
+  cleanup of incomplete staging. Browser loading/badge checks also passed.
+- Evidence: `.work/gui-validation/transfer-diagnosis/` includes failed-method
+  summaries, chunk command logs, `verified-result.json`, `signature-result.json`,
+  browser/badge bounds and `final-host.{stdout,stderr}.log`. Diagnostic APK copies
+  can be regenerated from the source and are removed after verification.
+
+## Guided workflow usability and installation — 2026-11-12
+
+- Local preparation starts automatically when required JDK/SDK components exist.
+  The metadata helper is warmed before exposing a ready workspace. Simulated
+  first use reached ready with no button click and zero network downloads using
+  this host's installed tools. SDK downloads still require their license checkbox.
+- App names/versions are returned before background icon batches, which do not
+  occupy the build worker. The helper is cached by source/toolchain hashes.
+  Warm list query: 77 apps in 0.911s; browser repeat: 0.999s; 20 icons: 0.896s.
+  Initial compilation took 7.451s and is now part of automatic helper preparation.
+- Build cards include app name/package/version and available icons, and named
+  steps rather than an invented time percentage. Device icons that arrive after
+  building starts also enrich those cards. Retained historical APKs supply metadata
+  when available. The front-end AI-service footer sentence was removed.
+- The browser exposes one APK-set ZIP download, including single APK builds.
+  `INSTALL.txt` contains an explicit `adb -s SERIAL install`/`install-multiple`
+  command; `outputs.json` contains member hashes. Original split selection remains.
+- Each build can install/reinstall/retry on an explicitly chosen authorized serial.
+  Automatic installation retains the source serial. Disappearing source devices
+  stay selected as disconnected, and no new device silently replaces them. Consent
+  is scoped to package/job/device; each attempt retains its own evidence and backup.
+- The reported `gui-pull-0` failure was already pinned with `-s 192.168.3.20:5555`.
+  An unauthorized second device was present but not selected. Its stderr ended at
+  89%, with no diagnostic, and exit status1 was not a timeout; the transfer's
+  underlying cause is not established. Read-only pulls now retry three times on
+  that same serial. A fresh remote SHA-256 match permits reusing saved APK bytes
+  for preflight backups. Failed installations keep builds in `install_failed`.
+- Browser cancellation of app loading is covered by a real socket-reset regression;
+  disconnected clients cause no second HTTP response or terminal traceback.
+- Browser tests selected/built while icons were loading, verified progressive steps,
+  disabled the actual unauthorized phone, and exercised another target plus source
+  disappearance using UI-only simulated devices (no ADB requests to those serials).
+  They caught and fixed an old-target click race: destination changes now render
+  synchronously, and install buttons read the live selection at click time.
+- Actual API30 fixture installation passed with the unauthorized USB phone present;
+  source serial was unchanged throughout. The original fixture APK was then restored
+  and verified by remote SHA-256. Operator apps were not installed or launched.
+  Another authorized physical destination remains untested; host tests cover explicit
+  destination retry and rejection of consent transferred across devices.
+- 171 SDK-enabled host tests passed (196.405s). Evidence is retained under
+  `.work/gui-validation/workflow-v2/`: browser/controls results, automatic-setup,
+  backup, full-install, and `host.{stdout,stderr}.log`.
+
+## Guided workflow refinements — 2026-11-12
+
+- SDK discovery covers `ANDROID_HOME`, legacy `ANDROID_SDK_ROOT`, Android Studio/PATH
+  and common home/system locations, including partial SDK installations. Prepared
+  workspace paths are shown explicitly in setup.
+- Default action is HTTPS interception. Rebuild-only diagnostics and optional API30
+  in-app signer adaptation have user-facing explanations; app-specific placeholders
+  were replaced with generic examples.
+- Automatic local `/cert` probing, a custom URL and file override accept/normalize
+  PEM or DER certificates. Bounded fetches ignore host proxy env, refuse redirects
+  and validate one public X.509 certificate. CA source/digest and baked proxy endpoint
+  are recorded per build, including endpoint recovery for earlier build records.
+- One shell metadata query returned versions and 64×64 PNG icons for all 77 installed
+  apps on the recorded Redmi API30 cell in 5.205s (browser repeat 4.596s); no APK pulls
+  per app or helper-app installation were needed.
+- Browser fixture build using an uploaded DER CA, output download, canceled deletion,
+  APK-only deletion with backup retention, and full-build deletion passed. A second
+  fixture build used the downloaded/cached DER certificate and a different proxy port;
+  apksigner verification passed. All new test builds were deleted using the new API.
+  The certificate endpoint was an owned local test server; a running Burp instance
+  was not used for this validation. No app was installed/launched during these checks.
+- 158 host tests passed with SDK checks enabled (190.009s), including certificate
+  equivalence, fetch controls, SDK discovery, icons/version parsing and scoped cleanup.
+- Evidence: `.work/gui-validation/ui-update/{result,url-build-result}.json`,
+  `host-regression.{stdout,stderr}.log` and `.work/gui-validation/app-list-update/result.json`.
 
 ## Continuing goal — 2026-11-06
 
@@ -1058,3 +1158,38 @@ locator inputs, so no new Midway native claim is made. Owned fixtures/listener/
 reverse are removed; global proxy and root/module configuration were not changed
 by the runners. Login remains deferred. Handoff:
 `.work/evidence/runs/20261107T235202-58cbc5117a/report.json`.
+
+### Guided operator workflow — 2026-11-12
+
+Added `./repack.sh` / `repack ui`, a localhost-only browser UI with APK/split/
+container selection, connected-phone selection and installed-app name/package
+search. The shell metadata helper returned77 user apps on the recorded Redmi,
+including display names, without installing a helper app. Its temporary JAR is
+removed. Actual device serial for these observations was192.168.3.20:5555.
+
+The UI prepared SDK/helpers and a persistent signing identity. The identity now
+lives per user under XDG data rather than per release folder. Actual migration
+preserved the previous GUI key/password bytes; fixture and expert CLI identities
+remain separate. SDK archives and helper downloads are hash-bound. A source
+bundle with no Git or previous local lock downloaded its own SDK/helpers, created
+its identity, and produced a signed interception APK through the same UI API.
+Fresh-host compatibility beyond this isolated Linux workspace is still unproven.
+
+Chromium browser automation exercised the native file picker, CA picker, app-name
+search, building, authenticated downloads and replacement approval. The original
+owned `dev.repack.fixture.other` APK remained unchanged while approval was pending;
+after approval its installed bytes matched the generated APK. The original
+fixture installation was restored. Midway APK hashes, global proxy and reverse
+mappings were preserved. No target login/traffic flow was tested by this change.
+
+Common interception calls now pass the inspected input API to DEX rewriting;
+the older helper no longer requires a cached development device cell. A related
+host-only Conscrypt fixture audit uses its min-api28 fallback without a phone.
+The full SDK-enabled suite passed144 tests. Earlier fresh-setup failures remain
+historical observations, not acceptance.
+
+The bundle builder creates deterministic source ZIPs, excluding local locks,
+keys, APKs, downloaded tools and captures. GUI builds retain original backups,
+outputs and result logs, then discard bulky scratch and successful upload copies.
+This release supports the common plain/interception workflow. Experimental startup
+repair, native/Dart modes and broader platform support retain their separate scope.

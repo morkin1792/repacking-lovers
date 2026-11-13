@@ -43,22 +43,29 @@ def validate_toolchain(lock: dict, *, device=False) -> dict:
 def resolve_key(path: Path, lock: dict, evidence: Path) -> dict:
     if not path.is_file(): raise PrerequisiteError('Signing key does not exist; no replacement key was generated')
     fixture = path.resolve() == (ROOT / '.work/keys/repack.p12').resolve()
-    password = os.environ.get('REPACK_KEYSTORE_PASSWORD_FILE') or (str(ROOT / '.work/keys/fixture.pass') if fixture else None)
-    alias = os.environ.get('REPACK_KEY_ALIAS') or ('repack' if fixture else None)
+    from .setup import MANAGED_KEY, MANAGED_PASSWORD
+    managed = path.resolve() == MANAGED_KEY.resolve()
+    # The browser's operator key has its own credentials, independent of expert
+    # CLI environment variables and of the persistent fixture identities.
+    password = (str(MANAGED_PASSWORD) if managed else
+                os.environ.get('REPACK_KEYSTORE_PASSWORD_FILE') or (str(ROOT / '.work/keys/fixture.pass') if fixture else None))
+    alias = 'repack' if managed else os.environ.get('REPACK_KEY_ALIAS') or ('repack' if fixture else None)
     if not password or not alias or not Path(password).is_file():
         raise PrerequisiteError('Set REPACK_KEYSTORE_PASSWORD_FILE and REPACK_KEY_ALIAS for the existing operator key')
     certificate = evidence / 'operator-certificate.der'
     execute([tool(lock, 'keytool'), '-exportcert', '-alias', alias, '-keystore', str(path), '-storepass:file', password,
              '-file', str(certificate)], evidence, 'operator-cert-export', env=environment(lock))
     result = {'path': str(path.resolve()), 'alias': alias, 'password_file': str(Path(password).resolve()), 'sha256': sha256(certificate)}
-    separate = os.environ.get('REPACK_KEY_PASSWORD_FILE')
+    separate = None if managed else os.environ.get('REPACK_KEY_PASSWORD_FILE')
     if separate:
         if not Path(separate).is_file(): raise PrerequisiteError('Separate key password file is missing')
         if Path(separate).resolve() != Path(password).resolve(): result['key_password_file'] = str(Path(separate).resolve())
     return result
 
 
-def patch(input_ref: str, options: dict, lock: dict, evidence: Path) -> dict:
+def patch(input_ref: str, options: dict, lock: dict, evidence: Path, *, output_directory=False, progress=None) -> dict:
+    notify = progress or (lambda text: None)
+    notify('Inspecting original APKs and supported checks…')
     revision = source_hash()
     if options.get('trust_only') and options.get('dex_only'): raise ValueError('--trust-only and --dex-only conflict')
     if options.get('trust_only') and (options.get('proxy') is not None or options.get('antitamper') or options.get('integrity') or options.get('native_tls') or options.get('gadget') or options.get('relax_hostname') or options.get('dart_pinning')):
@@ -70,6 +77,7 @@ def patch(input_ref: str, options: dict, lock: dict, evidence: Path) -> dict:
         source['triage'] = {'code_verification': 'not-run', 'helper_class_collisions': [], 'cross_member_duplicate_classes': {}}
     else: source = triage(input_ref, options.get('device'), lock, evidence / 'p0', device_spec=options.get('device_spec'))
     out = Path(options['out']).resolve(); single = len(source['members']) == 1
+    if output_directory and single: out = out / 'patched.apk'
     if single and out.suffix.lower() != '.apk': raise ValueError('Single APK --out must end in .apk')
     if not single and out.suffix.lower() == '.apk': raise ValueError('Selected set --out must be a directory')
     manifest_path = out.with_suffix('.artifact.json') if single else out / 'manifest.json'
@@ -94,7 +102,7 @@ def patch(input_ref: str, options: dict, lock: dict, evidence: Path) -> dict:
         except gadget_module.GadgetUnsupported as error: raise UnsupportedOperation(str(error)) from error
     key = resolve_key(Path(options['key']), lock, evidence)
     ca = Path(options.get('ca') or Path.home() / '.mitmproxy/mitmproxy-ca-cert.pem')
-    if not ca.is_file(): raise PrerequisiteError('Provide --ca with the public PEM matching the configured proxy')
+    if not ca.is_file(): raise PrerequisiteError('Provide --ca with the public PEM or DER certificate matching the configured proxy')
     ca_sha, ca_der = public_ca(ca)
     ca = evidence / 'public-ca.pem'; ca.write_text(ssl.DER_cert_to_PEM_cert(ca_der))
     proxy = None if options.get('trust_only') else options.get('proxy') or parse_proxy('127.0.0.1:8080')
@@ -124,18 +132,21 @@ def patch(input_ref: str, options: dict, lock: dict, evidence: Path) -> dict:
     for index, member in enumerate(source['members']):
         part = staging / str(index); part.mkdir(); current = Path(member['apk']); is_base = not member.get('split')
         if is_base:
+            notify('Rebuilding resources and adding the proxy CA…')
             trust = apply_trust(current, ca, part / 'trust', lock); current = Path(trust['unsigned_apk'])
             transforms.append({'component': 'trust', 'member': 'base', 'transformation': 'applied', 'ca_sha256': ca_sha,
                                'engine': trust['engine']['sha256'], 'compiler_sha256': trust['engine']['compiler']['sha256'],
                                'resource_ids': trust['resource_ids']})
         if not options.get('trust_only') and member['dex']:
+            notify('Applying recognized Java pinning patches…')
             duplicates = source['triage']['cross_member_duplicate_classes']
             if duplicates:
                 transforms.append({'component': 'java', 'member': member.get('split') or 'base', 'transformation': 'unsupported', 'reason': 'cross-member-class-ambiguity'})
             else:
                 java_evidence = part / 'java-evidence'; java_evidence.mkdir()
                 try:
-                    changed = patch_apk(current, part / 'java', key, lock, java_evidence, chromium_ca=ca_der, relax_hostname=bool(options.get('relax_hostname'))); current = Path(changed['apk'])
+                    changed = patch_apk(current, part / 'java', key, lock, java_evidence, chromium_ca=ca_der,
+                        relax_hostname=bool(options.get('relax_hostname')), api=source['metadata_api']); current = Path(changed['apk'])
                     transforms.append({'component': 'java', 'member': member.get('split') or 'base', 'transformation': 'applied',
                                        'methods': [{'class': row['class'], 'method': row['method'], 'kind': row['kind'],
                                                     'replacement': row['replacement']} for row in changed['patches']]})
@@ -145,6 +156,7 @@ def patch(input_ref: str, options: dict, lock: dict, evidence: Path) -> dict:
                                        'transformation': 'unsupported' if candidates['rejected'] else 'skipped', 'reason': 'no-accepted-java-candidates'})
         if is_base and not options.get('trust_only'):
             bootstrap_evidence = part / 'bootstrap-evidence'; bootstrap_evidence.mkdir()
+            notify('Adding startup routing and signing support…')
             bootstrap = build_bootstrap(current, part / 'bootstrap', key, lock, bootstrap_evidence, proxy=proxy,
                 identity_mode='identity' if antitamper else 'none', probe_token=build_id,
                 original_certificates=[Path(item['der']).read_bytes() for item in signing['certificates']] if antitamper else None,
@@ -207,6 +219,7 @@ def patch(input_ref: str, options: dict, lock: dict, evidence: Path) -> dict:
             'selected': [{k: row[k] for k in ('path', 'sha256', 'size')} for row in container['selected']],
             'bundletool_sha256': (container.get('bundletool') or {}).get('sha256')}
     staged = []
+    notify('Aligning, signing and verifying the APKs…')
     for member, current, part in pending:
         import re
         split = member.get('split')

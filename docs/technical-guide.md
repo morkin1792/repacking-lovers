@@ -4,6 +4,13 @@ This guide keeps environment setup, advanced modes and verification details out
 of the [user README](../README.md). The [future-work list](FUTURE-WORK.md) separates
 missing features, untested configurations and deliberate limits.
 
+## Guided setup
+
+The [browser workflow](guided-workflow.md) prepares SDK/helpers and a persistent
+operator key without running fixture gates or requiring Git initialization.
+Use `./repack.sh` for the common workflow. The manual developer setup below
+remains useful for reproducing historical fixture evidence.
+
 ## Checkout and host setup
 
 Run from the repository root. This is currently a source-checkout workflow; the
@@ -103,7 +110,8 @@ Use `REPACK_KEY_PASSWORD_FILE` only when the private key has a different passwor
 Normal patching never generates a replacement key. The fixture-key shortcut in
 later examples belongs to the development workspace, not a distributed default.
 
-Use the public CA PEM exported by the proxy that will intercept the app. Never
+Use the public CA certificate exported by the proxy that will intercept the app.
+PEM and binary DER inputs are accepted and normalized automatically. Never
 supply its private key. Without `--ca`, patching checks
 `~/.mitmproxy/mitmproxy-ca-cert.pem`; an explicit path is clearer. Configure the
 proxy listener before launching the patched app. `--proxy` bakes an endpoint into
@@ -328,3 +336,23 @@ compatibility. Current results and controls live in
 [the Midway guide](targets/midway-pinning.md), with the full history in
 [implementation progress](implementation/progress.md). Installed state and
 private captures are local observations, not promises about another device.
+
+
+## Interrupted APK downloads
+
+The GUI and CLI share `repack/transfers.py`. Reads use no PTY and stream binary
+stdout directly to staging files. Successful exit alone is insufficient: chunk
+length, total length, and a SHA-256 computed on the device must all match. Retry
+size shrinks automatically after a failed read; verified chunks already collected
+within the operation are retained. If the bounded retry budget is exhausted,
+staging files are discarded and installation is not attempted.
+
+The recorded API30 Wi-Fi connection interrupted ordinary `adb pull`, uncompressed
+`pull -Z`, and legacy `exec-out cat`. The latter returned zero with only 16,424,960
+of 218,343,927 bytes. This identifies a bulk-transfer/transport problem but does
+not establish a particular ADB daemon or Wi-Fi-driver defect. Small shell commands
+can succeed between these interruptions. The recovery path stays on the explicit
+serial and configured ADB server; it does not kill/restart the shared daemon.
+
+See [ADB command documentation](https://android.googlesource.com/platform/packages/modules/adb/+/refs/heads/main/docs/user/adb.1.md)
+for shell/PTY and transfer command behavior.

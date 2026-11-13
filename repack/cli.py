@@ -22,11 +22,17 @@ def proxy_argument(value):
 def main(argv=None) -> int:
     parser = argparse.ArgumentParser(prog='repack')
     commands = parser.add_subparsers(dest='command', required=True)
+    browser = commands.add_parser('ui', help='Open the local guided APK/app workflow')
+    browser.add_argument('--port', type=int, default=8787)
+    browser.add_argument('--no-browser', action='store_true')
+    setup = commands.add_parser('setup', help='Prepare the guided workflow tools and persistent operator key')
+    setup.add_argument('--sdk'); setup.add_argument('--jdk')
+    setup.add_argument('--accept-sdk-license', action='store_true')
     inspect = commands.add_parser('triage'); inspect.add_argument('input'); inspect.add_argument('--device'); inspect.add_argument('--device-spec', type=Path)
     build = commands.add_parser('patch'); build.add_argument('input'); build.add_argument('--out', type=Path, required=True)
     build.add_argument('--key', type=Path, required=True); build.add_argument('--device'); build.add_argument('--device-spec', type=Path)
     for flag in ('antitamper', 'dex-only', 'trust-only'): build.add_argument('--' + flag, action='store_true')
-    build.add_argument('--ca', type=Path); build.add_argument('--proxy', type=proxy_argument)
+    build.add_argument('--ca', type=Path, help='Public proxy CA certificate in PEM or binary DER format'); build.add_argument('--proxy', type=proxy_argument)
     build.add_argument('--relax-hostname', action='store_true', help='Optional relaxation of recognized app-owned OkHttp/Apache hostname checks')
     build.add_argument('--dart-pinning', action='store_true', help='Optional typed ARM64 AOT pin predicates; requires a prepared matching Dart analyzer')
     build.add_argument('--gadget', choices=['raw-apk-fixture'], help='Explicit optional script-mode Gadget; owned API30 ARM64 fixture only')
@@ -42,7 +48,17 @@ def main(argv=None) -> int:
     verify.add_argument('--proxy', type=proxy_argument); verify.add_argument('--replace-existing-and-wipe-data', action='store_true')
     verify.add_argument('--runtime-evidence', type=Path, help='Read-only assessment of an artifact-bound capture packet; skips installation')
     verify.add_argument('--review', type=Path, help='Write a new concise Markdown review without raw payloads')
-    args = parser.parse_args(argv)
+    arguments = sys.argv[1:] if argv is None else argv
+    args = parser.parse_args(arguments or ['ui'])
+    if args.command == 'ui':
+        if not 0 <= args.port <= 65535: parser.error('Port must be 0..65535')
+        from .gui import serve
+        server, workflow = serve(args.port, not args.no_browser)
+        try: server.serve_forever()
+        except KeyboardInterrupt: print('\nFinishing any active operation before closing…', flush=True)
+        finally:
+            server.server_close(); workflow.worker.shutdown(wait=True)
+        return 0
     result, evidence = report('cli-' + args.command); result['command']['argv'] = argv if argv is not None else sys.argv
     status = 0
     try:
@@ -50,8 +66,14 @@ def main(argv=None) -> int:
             raise ValueError('Choose a fresh .md review output path')
         if args.command == 'verify' and args.runtime_evidence is not None and args.replace_existing_and_wipe_data:
             raise ValueError('--runtime-evidence is read-only and conflicts with replacement authorization')
-        lock = load_lock()
-        if args.command == 'triage':
+        if args.command == 'setup':
+            from .setup import prepare
+            prepare(evidence,sdk=args.sdk,jdk=args.jdk,accept_sdk_license=args.accept_sdk_license,notify=print)
+            result.update(verification='passed',scope='Host setup; no app installed')
+            print('READY: run python -m repack ui')
+        else: lock = load_lock()
+        if args.command == 'setup': pass
+        elif args.command == 'triage':
             validate_toolchain(lock, device=bool(args.device))
             inventory = triage(args.input, args.device, lock, evidence / 'triage', allow_patched=True, device_spec=args.device_spec)
             result.update(verification='passed', inventory=inventory, scope='read-only input/signature/typed-reference triage; enforcement unknown')

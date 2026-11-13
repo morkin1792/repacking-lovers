@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "platform": "linux-x86_64",
+  "sdk_license": "https://developer.android.com/studio/terms",
+  "archives": [
+    {
+      "name": "platform",
+      "url": "https://dl.google.com/android/repository/platform-36_r02.zip",
+      "sha256": "37607369a28c5b640b3a7998868d45898ebcb777565a0e85f9acf36f29631d2e",
+      "size": 65878410,
+      "destination": "platforms/android-36"
+    },
+    {
+      "name": "build-tools",
+      "url": "https://dl.google.com/android/repository/build-tools_r36_linux.zip",
+      "sha256": "5d9ac77fb6ff43d9da518a337b4fcf8f9097113df531d99ccefe80ef7ce8250b",
+      "size": 63737259,
+      "destination": "build-tools/36.0.0"
+    },
+    {
+      "name": "platform-tools",
+      "url": "https://dl.google.com/android/repository/platform-tools_r37.0.1-linux.zip",
+      "sha256": "d230f13842f60f782a8645f9c813f8f845bf36089ea7289f28c48f17979313f1",
+      "size": 9054187,
+      "destination": "platform-tools"
+    }
+  ]
+}

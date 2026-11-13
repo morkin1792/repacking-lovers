@@ -121,7 +121,8 @@ def host_cases(fetch=False, cases=CASES):
             if mode == 'conscrypt':
                 audit = part / 'side-effect-audit'; audit.mkdir()
                 prefix = shadow_command[:shadow_command.index('shadow')]
-                inspected = inspect_dex(part / 'patched', prefix, lock['cell']['api'], audit)
+                # This host fixture is built with min-api28 and needs no phone.
+                inspected = inspect_dex(part / 'patched', prefix, (lock.get('cell') or {}).get('api') or 28, audit)
                 for target in patched['patches']:
                     callback = next(m for m in inspected['classes'][target['class']]['methods'] if m['descriptor'] == target['method'])
                     refs = callback['references']

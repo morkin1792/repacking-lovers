@@ -235,7 +235,8 @@ def inspect_input(input_ref: str, serial: str | None, lock: dict, evidence: Path
         files = []
         for index, path in enumerate(paths):
             target = evidence / (f'{index:03d}-' + Path(path).name)
-            adb(lock, evidence, 'input-pull-' + str(index), ['pull', path, str(target)], serial=serial); files.append(target)
+            from .verify import pull_apk
+            pull_apk(lock,evidence,'input-pull-'+str(index),serial,path,target); files.append(target)
         again = [line[8:] for line in shell(lock, evidence, 'input-paths-after', serial, ['pm', 'path', package]).stdout.splitlines() if line.startswith('package:')]
         if paths != again: raise PrerequisiteError('Installed member inventory changed during pull')
         installer = shell(lock, evidence, 'input-installer', serial, ['pm', 'list', 'packages', '-i', package]).stdout

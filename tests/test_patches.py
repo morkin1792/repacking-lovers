@@ -1,5 +1,10 @@
 """Conservative-match controls; runtime shadow selection is measured by T-U30/31."""
 import unittest
+import tempfile
+from pathlib import Path
+from types import SimpleNamespace
+from unittest.mock import patch
+from repack.patches import patch_apk, UnsupportedJavaPatch
 
 from repack.patches import find_candidates
 
@@ -12,6 +17,27 @@ def method(descriptor, *, strings=(), references=(), flags=1, implementation='pr
 def cls(name, methods, *, parent='Ljava/lang/Object;', interfaces=(), fields=()):
     return {'descriptor': name, 'superclass': parent, 'interfaces': list(interfaces), 'field_types': list(fields),
             'access_flags': 1, 'methods': methods, 'dex': 'classes.dex'}
+
+
+class FreshHostOpcodeControls(unittest.TestCase):
+    def test_explicit_input_api_does_not_require_a_device_cell(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            with patch('repack.patches.extract_dex',return_value=[]), patch('repack.patches.dex_tool',return_value=['tool']), \
+                 patch('repack.patches.inspect_dex',return_value={'classes':{},'duplicate_classes':[]}) as inspect:
+                with self.assertRaises(UnsupportedJavaPatch):
+                    patch_apk(root/'input.apk',root/'out',{}, {'cell':None},root,api=35)
+            self.assertEqual(inspect.call_args.args[2],35)
+
+    def test_input_minimum_sdk_is_used_without_recorded_cell(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            with patch('repack.patches.extract_dex',return_value=[]), patch('repack.patches.dex_tool',return_value=['tool']), \
+                 patch('repack.patches.inspect_dex',return_value={'classes':{},'duplicate_classes':[]}) as inspect, \
+                 patch('repack.patches.execute',return_value=SimpleNamespace(stdout="sdkVersion:'28'")):
+                with self.assertRaises(UnsupportedJavaPatch):
+                    patch_apk(root/'input.apk',root/'out',{}, {'cell':None,'tools':{'aapt2':{'path':'aapt2'}}},root)
+            self.assertEqual(inspect.call_args.args[2],28)
 
 
 class PinningMatchControls(unittest.TestCase):

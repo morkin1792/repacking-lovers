@@ -156,15 +156,10 @@ def resource_ids(apk: Path, lock: dict, evidence: Path, label: str) -> dict:
 
 
 def public_ca(ca: Path) -> tuple[str, bytes]:
-    text = ca.read_text()
-    match = re.fullmatch(r'\s*(-----BEGIN CERTIFICATE-----\s+[A-Za-z0-9+/=\s]+-----END CERTIFICATE-----)\s*', text)
-    if not match: raise ValueError('CA must contain exactly one public PEM certificate and no private key')
-    try:
-        der = ssl.PEM_cert_to_DER_cert(match[1])
-        ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT).load_verify_locations(cadata=match[1])
-    except (ssl.SSLError, ValueError) as error:
-        raise ValueError('CA is not a valid public X.509 certificate') from error
-    return hashlib.sha256(der).hexdigest(), der
+    from .certificates import decode_public, MAX_CERTIFICATE
+    with ca.open('rb') as stream:
+        certificate = decode_public(stream.read(MAX_CERTIFICATE + 1))
+    return certificate['sha256'], certificate['der']
 
 
 def add_trust_anchor(decoded: Path, ca: Path, target_sdk: int) -> dict:

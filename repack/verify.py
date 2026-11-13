@@ -2,6 +2,7 @@
 from pathlib import Path
 from contextlib import contextmanager
 import socket
+import shutil
 import hashlib
 import json
 import sys
@@ -145,6 +146,25 @@ def adb(lock: dict, evidence: Path, label: str, args: list[str], *, serial=None,
     return completed
 
 
+def pull_apk(lock,evidence,label,serial,remote,destination):
+    from .transfers import pull_apk as verified_pull
+    return verified_pull(lock,evidence,label,serial,remote,destination)
+
+
+def backup_apk(lock,evidence,label,serial,remote,destination,candidates=()):
+    # Reuse only bytes freshly proven identical to the installed APK on this device.
+    known={sha256(Path(p)):Path(p) for p in candidates if Path(p).is_file()}
+    if known:
+        result=shell(lock,evidence,label+'-remote-sha256',serial,['sha256sum',remote],check=False)
+        match=re.match(r'^([a-fA-F0-9]{64})\s',result.stdout)
+        if result.returncode==0 and match and match[1].lower() in known:
+            shutil.copyfile(known[match[1].lower()],destination)
+            if sha256(Path(destination))!=match[1].lower():raise RuntimeError('Cached APK changed during backup')
+            write_json(evidence/(label+'-cache.json'),{'device':serial,'sha256':match[1].lower(),'remote':remote,'reused':True})
+            return
+    pull_apk(lock,evidence,label,serial,remote,destination)
+
+
 def shell(lock: dict, evidence: Path, label: str, serial: str, args: list[str], check=True, timeout=120):
     return adb(lock, evidence, label, ['shell', shlex.join(args)], serial=serial, check=check, timeout=timeout)
 
@@ -159,6 +179,14 @@ def uid_packages(output: str, expected_uid: int) -> list[str]:
             raise PrerequisiteError('Shared/unknown UID inventory format or UID mismatch')
         packages.append(match[1])
     return packages
+
+
+class ReplacementRequired(PrerequisiteError):
+    """A caller must obtain target-specific data-loss authorization before retrying."""
+    def __init__(self, package: str, serial: str):
+        super().__init__('Existing app signer differs; explicit wipe authorization required for ' + package)
+        self.package = package
+        self.serial = serial
 
 
 def artifact_members(artifact: dict) -> list[dict]:
@@ -177,7 +205,7 @@ def artifact_fingerprint(artifact: dict) -> str:
 
 
 def preflight(artifact: dict, serial: str, replace_existing: bool, lock: dict,
-              evidence: Path, label: str, *, requested_package: str | None = None) -> dict:
+              evidence: Path, label: str, *, requested_package: str | None = None, backup_candidates=()) -> dict:
     package = artifact['package']
     if requested_package is not None and requested_package != package: raise ValueError('Requested package differs from artifact')
     if package not in FIXTURE_PACKAGES and requested_package != package:
@@ -236,7 +264,7 @@ def preflight(artifact: dict, serial: str, replace_existing: bool, lock: dict,
         previous_members = []
         for index, path in enumerate(paths):
             previous_apk = evidence / (label + '-previous-' + str(index) + '.apk')
-            adb(lock, evidence, label + '-pull-' + str(index), ['pull', path, str(previous_apk)], serial=serial)
+            backup_apk(lock,evidence,label+'-pull-'+str(index),serial,path,previous_apk,backup_candidates)
             previous_signers = signer_digests(previous_apk, lock, evidence, label + '-previous-signers-' + str(index), api=api)
             previous, _ = badging(previous_apk, lock, evidence, label + '-previous-badging-' + str(index))
             if previous['package'] != package or previous['version_code'] > base_metadata['version_code']:
@@ -246,7 +274,7 @@ def preflight(artifact: dict, serial: str, replace_existing: bool, lock: dict,
         if any(item['signer_sha256'] != previous_signers for item in previous_members): raise RuntimeError('Installed members have inconsistent signers')
         plan.update(existing_sha256=previous_members[0]['sha256'], existing_signers=previous_signers, existing_members=previous_members)
         if previous_signers != signatures:
-            if not replace_existing: raise PrerequisiteError('Existing fixture signer differs; explicit wipe authorization required')
+            if not replace_existing: raise ReplacementRequired(package, serial)
             plan['replace'] = True
             if package not in FIXTURE_PACKAGES:
                 system = shell(lock, evidence, label + '-system-package', serial,
@@ -304,15 +332,9 @@ def install(artifact: dict, serial: str, plan: dict, lock: dict,
     if len(after) != len(members): raise RuntimeError('Installed member count differs after Success')
 
 
-def verify_artifact(manifest: Path, serial: str, lock: dict, evidence: Path, *, proxy=None, replace_existing=False, mutations=None) -> dict:
-    from .pipeline import validate_toolchain
-    from .report import load_artifact
-    validate_toolchain(lock, device=True)
-    document, artifact = load_artifact(manifest)
-    configuration = document['semantic']['configuration']
-    if proxy is not None and proxy != configuration['proxy']:
-        raise ValueError('--proxy asserts the baked endpoint; it cannot override the artifact')
-    api = int(shell(lock, evidence, 'verify-api', serial, ['getprop', 'ro.build.version.sdk']).stdout.strip())
+def validate_runtime(document,serial,lock,evidence,label):
+    configuration=document['semantic']['configuration']
+    api = int(shell(lock, evidence, label+'-api', serial, ['getprop', 'ro.build.version.sdk']).stdout.strip())
     if configuration['antitamper_selected'] and api != document['semantic']['original_identity']['metadata_api']:
         raise PrerequisiteError('Identity artifact was built for a different runtime API; no install attempted')
     native_tls = configuration.get('native_tls')
@@ -325,10 +347,20 @@ def verify_artifact(manifest: Path, serial: str, lock: dict, evidence: Path, *, 
     if dart_pinning and api != 30:
         raise PrerequisiteError('Dart pinning artifact requires its measured API30 runtime; no install attempted')
     if native_tls or gadget or dart_pinning:
-        supported = shell(lock, evidence, 'verify-native-tls-abis', serial, ['getprop', 'ro.product.cpu.abilist']).stdout.strip().split(',')
-        pages = shell(lock, evidence, 'verify-native-tls-pages', serial, ['getconf', 'PAGE_SIZE']).stdout.strip()
+        supported = shell(lock, evidence, label+'-abis', serial, ['getprop', 'ro.product.cpu.abilist']).stdout.strip().split(',')
+        pages = shell(lock, evidence, label+'-pages', serial, ['getconf', 'PAGE_SIZE']).stdout.strip()
         if not supported or supported[0] != 'arm64-v8a' or pages != '4096':
             raise PrerequisiteError('Native TLS artifact requires the measured ARM64/4KB runtime; no install attempted')
+
+def verify_artifact(manifest: Path, serial: str, lock: dict, evidence: Path, *, proxy=None, replace_existing=False, mutations=None) -> dict:
+    from .pipeline import validate_toolchain
+    from .report import load_artifact
+    validate_toolchain(lock, device=True)
+    document, artifact = load_artifact(manifest)
+    configuration = document['semantic']['configuration']
+    if proxy is not None and proxy != configuration['proxy']:
+        raise ValueError('--proxy asserts the baked endpoint; it cannot override the artifact')
+    validate_runtime(document,serial,lock,evidence,'verify')
     plan = preflight(artifact, serial, replace_existing, lock, evidence, 'verify', requested_package=artifact['package'])
     if mutations is None: mutations = []
     install(artifact, serial, plan, lock, evidence, 'verify', mutations)

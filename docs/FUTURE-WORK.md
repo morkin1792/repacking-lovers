@@ -131,19 +131,33 @@ other. See [M2/M3](implementation/M2-M3.md) for runtime trust and CT acceptance.
 
 ## Release and maintenance
 
-- [ ] Reproduce setup/patching on a clean second host. The current lock includes
-  workspace paths, ADB configuration and device facts; dependencies also live in
-  ignored caches. Add preparation and local lock regeneration without stale
-  server/device settings.
+Delivered in the guided workflow: localhost browser UI, APK/split/container
+selection, installed-app name/package search with immediate version strings and
+background icons, automatic local tool/key preparation,
+SDK discovery and hash-pinned helper setup, automatic Burp-certificate retrieval,
+PEM/DER input normalization, build/download/install, scoped replacement confirmation,
+proxy/app details and build deletion in history, named build steps, a single APK-set
+download with installation instructions, per-build destination selection/retry with
+device-scoped replacement consent, loading-only automatic preparation, adaptive
+checksum-verified APK reads over unstable transports, and a reproducible source-bundle builder. See
+[guided workflow](guided-workflow.md). Broader packaging/platform work below
+remains separate.
+
+- [ ] Reproduce guided setup/patching on a clean second physical host. The current lock includes
+  workspace paths and dependencies live in ignored caches. Guided setup already
+  regenerates local paths without stale device/server settings and passed an
+  isolated no-Git SDK/helper bootstrap; another physical host remains untested.
 - [ ] Include/locate sibling configs, Java/native sources and assets in standalone
-  packaging. Editable installation from the checkout is the current workflow;
-  a Python wheel alone is incomplete.
+  wheel/installer packaging. The source bundle already includes these resources;
+  a Python wheel alone remains incomplete.
 - [ ] Validate additional host OS and Python/JDK versions. The resource compiler
   and analyzer have Linux-specific assumptions; current Dart setup wheels target
   Linux x86_64/CPython3.14.
 - [ ] Decide distribution/version and repository license, audit third-party
-  notices/artifact rights, and create a reproducible artifact when publishing.
-  Package version remains0.1.0.dev0; documentation edits do not publish it.
+  notices/artifact rights, and publish a reviewed release. The source-bundle
+  builder already passed reproducibility checks.
+  Package version remains0.1.0.dev0; the guided source bundle does not publish
+  itself or resolve the repository-license decision.
 - [ ] Reconcile stale progress/support-matrix target summaries with latest
   observations, retaining immutable history rather than overwriting it.
 

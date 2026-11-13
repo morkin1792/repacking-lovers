@@ -170,11 +170,17 @@ def dex_counts(path: Path) -> dict:
             [('strings', 56), ('types', 64), ('fields', 80), ('methods', 88), ('classes', 96)]}
 
 
-def patch_apk(original: Path, out: Path, key: dict, lock: dict, evidence: Path, *, chromium_ca=None, relax_hostname=False) -> dict:
+def patch_apk(original: Path, out: Path, key: dict, lock: dict, evidence: Path, *, chromium_ca=None, relax_hostname=False, api=None) -> dict:
     out.mkdir(parents=True, exist_ok=False)
     directory = out / 'original-dex'; dex = extract_dex(original, directory)
     command = dex_tool(lock, evidence)
-    api = lock['cell']['api']; inventory = inspect_dex(directory, command, api, evidence)
+    if api is None: api = (lock.get('cell') or {}).get('api')
+    if api is None:
+        text = execute([tool(lock, 'aapt2'), 'dump', 'badging', str(original)], evidence, 'java-input-sdk').stdout
+        minimum = re.search(r"(?:minSdkVersion|sdkVersion):'(\d+)'", text)
+        if minimum is None: raise PrerequisiteError('Missing APK minimum SDK for DEX inspection')
+        api = int(minimum[1])
+    inventory = inspect_dex(directory, command, api, evidence)
     candidates = find_candidates(inventory, chromium_anchor=chromium_ca is not None, relax_hostname=relax_hostname); write_json(out / 'candidates.json', candidates)
     if not candidates['accepted']: raise UnsupportedJavaPatch('No supported Java pinning matches; see candidates.json')
     selection = out / 'selection.tsv'
